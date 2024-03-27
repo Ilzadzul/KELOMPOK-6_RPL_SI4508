@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('account');
+});
+
+Route::post('review-store', 'BookingController@reviewstore')->name('review.store');
+Route::post('/admin/review', 'BookingController@store')->name('admin.review.store');
+
+Route::get('/feedback', function () {
+    return view('rating');
 });
