@@ -33,11 +33,13 @@
   <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="./assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
 </head>
 
-<body class="g-sidenav-show   bg-gray-100">
+<body class="g-sidenav-show bg-gray-100">
   <div class="min-height-300 bg-primary position-absolute w-100"></div>
-  <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+  <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="/dashboard" target="_blank">
@@ -46,103 +48,111 @@
       </a>
     </div>
     <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="/dashboard">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
-          </a>
-        </li>
+       <li class="nav-item">
+              <a class="nav-link active" href="/dashboard">
+                  <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="fas fa-tachometer-alt text-primary text-sm opacity-10"></i>
+                  </div>
+                  <span class="nav-link-text ms-1">Dashboard</span>
+              </a>
+          </li>
         <li class="nav-item">
           <a class="nav-link " href="/kontak">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+              <i class="fas fa-phone text-warning text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Kontak</span>
           </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="/databasependuduk">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Database Penduduk</span>
-            </a>
-          </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/formulirpenduduk">
+          <a class="nav-link" href="/databasependuduk">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+              <i class="fas fa-database text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Database Penduduk</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/formulirpenduduk">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-file-alt text-success text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Formulir Penduduk</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./riwayat">
+          <a class="nav-link" href="/riwayat">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-app text-info text-sm opacity-10"></i>
+              <i class="fas fa-history text-info text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Riwayat</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="/testujikemampuan">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Uji Kemampuan</span>
-          </a>
+            <a class="nav-link" href="/testujikemampuan">
+                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fas fa-clipboard-check text-danger text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Uji Kemampuan</span>
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="/rekomendasipekerjaan">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Rekomendasi Pekerjaan</span>
-            </a>
+              <a class="nav-link" href="/rekomendasipekerjaan">
+                  <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="fas fa-lightbulb text-danger text-sm opacity-10"></i>
+                  </div>
+                  <span class="nav-link-text ms-1">Rekomendasi Pekerjaan</span>
+              </a>
           </li>
         <li class="nav-item">
-          <a class="nav-link " href="/kategoripekerjaan">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Kategori Pekerjaan</span>
-          </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="/lowongan">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Lowongan Pekerjaan</span>
-            </a>
+              <a class="nav-link" href="/kategoripekerjaan">
+                  <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="fas fa-briefcase text-danger text-sm opacity-10"></i>
+                  </div>
+                  <span class="nav-link-text ms-1">Kategori Pekerjaan</span>
+              </a>
           </li>
         <li class="nav-item">
-          <a class="nav-link " href="/bimbingan">
+              <a class="nav-link" href="/lowongan">
+                  <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="fas fa-desktop text-danger text-sm opacity-10"></i>
+                  </div>
+                  <span class="nav-link-text ms-1">Lowongan Pekerjaan</span>
+              </a>
+          </li>
+        <li class="nav-item">
+              <a class="nav-link" href="/bimbingan">
+                  <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="fas fa-graduation-cap text-danger text-sm opacity-10"></i>
+                  </div>
+                  <span class="nav-link-text ms-1">Bimbingan Karir</span>
+              </a>
+          </li>
+        <li class="nav-item">
+              <a class="nav-link" href="/lokasi">
+                  <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="fas fa-map-marker-alt text-danger text-sm opacity-10"></i>
+                  </div>
+                  <span class="nav-link-text ms-1">Lokasi Kerja</span>
+              </a>
+          </li>
+        <li class="nav-item">
+              <a class="nav-link" href="/wilayah">
+                  <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="fas fa-map text-danger text-sm opacity-10"></i>
+                  </div>
+                  <span class="nav-link-text ms-1">Wilayah Terkait</span>
+              </a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Feedback">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+              <i class="fas fa-comments text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Bimbingan Karir</span>
+            <span class="nav-link-text ms-1">Feedback</span>
           </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="/lokasi">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Lokasi Kerja</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="/wilayah">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Wilayah Terkait</span>
-            </a>
         </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
