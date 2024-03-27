@@ -15,7 +15,6 @@ class CreateReviewRatingsTable extends Migration
     {
         Schema::create('review_ratings', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('booking_id');
             $table->longText('comments')->nullable();
             $table->integer('star_rating');
             $table->enum('status', ['active', 'deactive']);

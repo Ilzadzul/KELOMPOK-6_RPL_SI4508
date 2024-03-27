@@ -18,9 +18,11 @@ Route::get('/', function () {
     return view('account');
 });
 
-Route::post('review-store', 'BookingController@reviewstore')->name('review.store');
-Route::post('/admin/review', 'BookingController@store')->name('admin.review.store');
-
 Route::get('/feedback', function () {
     return view('rating');
 });
+
+
+Route::post('review-store', [BookingController::class, 'reviewstore'])->name('review.store');
+Route::post('/admin/review', [BookingController::class, 'reviewstore'])->name('admin.review.store');
+Route::resource('booking', BookingController::class);
