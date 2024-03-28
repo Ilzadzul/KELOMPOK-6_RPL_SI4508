@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.kalogakbisa')
 
 @section('content')
     {{-- <div class="container-fluid py-1 px-3">
@@ -384,7 +384,7 @@
         </div>
       </div>
     </div>
-    @include('layouts.partial.footer')
+    {{-- @include('layouts.partial.footer') --}}
   </div>
 
 @endsection

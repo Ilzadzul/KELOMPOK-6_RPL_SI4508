@@ -1,17 +1,3 @@
-<!--
-=========================================================
-* Argon Dashboard 2 - v2.0.4
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -158,12 +144,20 @@
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
-            <li class="nav-item">
-                <a class="nav-link " href="/account">
+            <li class="nav-item "@auth @if(auth()->user()->user_type === 'Super Admin') '' @else style="display:none;" @endif @endauth>
+                <a class="nav-link " href="/pengaturanadmin">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Account</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="{{ route('logout') }}">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Log Out</span>
                 </a>
             </li>
 
@@ -222,7 +216,7 @@
                     <li class="nav-item d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">Sign In</span>
+                            <span class="d-sm-inline d-none">{{explode(' ', Auth::user()->fullname)[0]}} ({{ Auth::user()->user_type }})</span>
                         </a>
                     </li>
                     <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
