@@ -24,6 +24,9 @@ use App\Http\Controllers\DatabaseController;
 // });
 
 // Login Admin Routes
+Route::get('/', function () {
+    return redirect('/login');
+});
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
