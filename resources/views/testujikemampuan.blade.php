@@ -23,7 +23,7 @@
             <li><a href="/test/math">Matematika</a></li>
             <li><a href="/test/english">Bahasa Inggris</a></li>
             <li><a href="/test/programming">Pemrograman</a></li>
-            <!-- Tambahkan lebih banyak topik jika diperlukan -->
+
         </ul>
     </section>
 </main>
