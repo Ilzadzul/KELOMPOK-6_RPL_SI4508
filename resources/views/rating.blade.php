@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Form</title>
+    <title>Feedback</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
@@ -164,10 +164,56 @@
         </div>
     </div>
 @endif
+
+<div style="margin-top: 50px;"></div>
+
+@if(!empty($reviewRatings))
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Review Ratings</div>
+
+                    <div class="card-body">
+                        @if($reviewRatings->isEmpty())
+                            <p>Tidak ada review yang tersedia saat ini.</p>
+                        @else
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Review</th>
+                                        <th>Rating</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($reviewRatings as $reviewRating)
+                                        <tr>
+                                            <td>{{ $reviewRating->comments }}</td>
+                                            <td>{{ $reviewRating->star_rating }} stars</td>
+                                            <td>
+                                                <form action="{{ route('review_ratings.destroy', $reviewRating->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
 <div class="container mt-4">
     <div class="row">
         <div class="col text-center">
-            <a href="{{ url('/') }}" class="btn btn-primary">Kembali</a>
+            <a href="{{ url('/dashboard') }}" class="btn btn-primary">Kembali</a>
         </div>
     </div>
 </div>
