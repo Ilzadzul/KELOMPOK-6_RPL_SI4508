@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DatabaseController;
+use App\Http\Controllers\ReviewRatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,11 +65,17 @@ Route::get('/editdatabase/{id}', [DatabaseController::class, 'edit'])->name('edi
 Route::put('/updatedatabase/{id}', [DatabaseController::class, 'update'])->name('updatedatabase');
 Route::get('/deletedatabase/{id}', [DatabaseController::class, 'destroy'])->name('deletedatabase');
 
-Route::get('/feedback', function () {
-    return view('rating');
-});
+Route::get('/feedback', [ReviewRatingController::class, 'showRatings'])->name('feedback');
 
 
 Route::post('review-store', [BookingController::class, 'reviewstore'])->name('review.store');
 Route::post('/admin/review', [BookingController::class, 'reviewstore'])->name('admin.review.store');
 Route::resource('booking', BookingController::class);
+
+Route::get('/review_ratings', [ReviewRatingController::class, 'index'])->name('review_ratings.index');
+Route::delete('/review_ratings/{id}', [ReviewRatingController::class, 'destroy'])->name('review_ratings.destroy');
+
+Route::get('/review_ratings', [ReviewRatingController::class, 'index']);
+
+Route::get('/ratings', [ReviewRatingController::class, 'showRatings']);
+

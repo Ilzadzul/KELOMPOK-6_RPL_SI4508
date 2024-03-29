@@ -10,7 +10,7 @@ class ReviewRating extends Model
     use HasFactory;
 
     protected $fillable = [
-        'comment',
+        'comments',
         'star_rating',
     ];
 
