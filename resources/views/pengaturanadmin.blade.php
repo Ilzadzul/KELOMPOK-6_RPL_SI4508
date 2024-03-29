@@ -101,10 +101,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="float-right">
-                        {{ $users -> links() }}
-                    </div>
-                    {{-- <?php
+                    <?php
 
                         use App\Models\User;
 
@@ -128,7 +125,7 @@
 
                         // Display items for the current page
                         foreach ($items as $item) {
-                            echo "Item: $item->id - $item->name<br>";
+                            // echo "Item: $item->id - $item->name<br>";
                         }
 
                         // Display pagination controls
@@ -143,7 +140,7 @@
                                 <a href="?page=<?php echo $currentPage + 1; ?>" class="btn btn-sm btn-white mb-0">Next</a>
                             <?php endif; ?>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
         </div>
