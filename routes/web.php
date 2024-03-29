@@ -2,6 +2,7 @@
 
 use App\Models\Login;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AuthController;
@@ -10,24 +11,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\ReviewRatingController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-// Route::get('/login', function () {
-//     return view('login');
-// });
+
 
 // Login Admin Routes
 Route::get('/', function () {
     return redirect('/login');
 });
+Route::post('/reset-password/{user}', [ResetPasswordController::class, 'reset'])->name('reset-password');
+
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
@@ -43,14 +34,14 @@ Route::get('/pengaturanadmin', function () {
     return view('pengaturanadmin');
 });
 // Add Admin Routes
-Route::get('/pengaturanadmin', [UserController::class, 'index'])->name('pengaturanadmin');
+Route::get('/pengaturanadmin', [AdminController::class, 'index'])->name('pengaturanadmin');
 
-Route::get('/tambahadmin', [AdminController::class, 'create'])->name('tambahadmin')-> middleware('auth', 'superadmin');;
-Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store')-> middleware('auth', 'superadmin');;
+Route::get('/tambahadmin', [AdminController::class, 'create'])->name('tambahadmin');
+Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
 
 Route::get('/editadmin/{id}', [AdminController::class, 'edit'])->name('editadmin');
-Route::put('/updateadmin/{id}', [AdminController::class, 'update'])->name('updateadmin')-> middleware('auth', 'superadmin');
-Route::get('/deleteadmin/{id}', [AdminController::class, 'destroy'])->name('deleteadmin')-> middleware('auth', 'superadmin');
+Route::put('/updateadmin/{id}', [AdminController::class, 'update'])->name('updateadmin');
+Route::get('/deleteadmin/{id}', [AdminController::class, 'destroy'])->name('deleteadmin');
 
 // Route::get('/databasependuduk', function () {
 //     return view('databasependuduk');

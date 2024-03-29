@@ -25,16 +25,16 @@
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link active" href="/dashboard">
+            <li class="nav-item ">
+                <a class="nav-link {{ Request::is('dashboard*') ? 'active' : '' }}" href="/dashboard">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-tachometer-alt text-primary text-sm opacity-10"></i>
                     </div>
-                <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="/kontak">
+                <a class="nav-link {{ Request::is('kontak*') ? 'active' : '' }}" href="/kontak">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-phone text-warning text-sm opacity-10"></i>
                     </div>
@@ -42,7 +42,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/databasependuduk">
+                <a class="nav-link {{ Request::is('databasependuduk*') ? 'active' : '' }}" href="/databasependuduk">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-database text-warning text-sm opacity-10"></i>
                     </div>
@@ -50,7 +50,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/formulirpenduduk">
+                <a class="nav-link" {{ Request::is('formulirpenduduk*') ? 'active' : '' }} href="/formulirpenduduk">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-file-alt text-success text-sm opacity-10"></i>
                     </div>
@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/riwayat">
+                <a class="nav-link {{ Request::is('riwayat*') ? 'active' : '' }}" href="/riwayat">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-history text-info text-sm opacity-10"></i>
                     </div>
@@ -66,7 +66,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/testujikemampuan">
+                <a class="nav-link {{ Request::is('testujikemampuan*') ? 'active' : '' }}" href="/testujikemampuan">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-clipboard-check text-danger text-sm opacity-10"></i>
                     </div>
@@ -74,7 +74,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/rekomendasipekerjaan">
+                <a class="nav-link {{ Request::is('rekomendasipekerjaan*') ? 'active' : '' }}" href="/rekomendasipekerjaan">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-lightbulb text-danger text-sm opacity-10"></i>
                     </div>
@@ -82,7 +82,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/kategoripekerjaan">
+                <a class="nav-link {{ Request::is('kategoripekerjaan*') ? 'active' : '' }}" href="/kategoripekerjaan">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-briefcase text-danger text-sm opacity-10"></i>
                     </div>
@@ -90,7 +90,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/lowongan">
+                <a class="nav-link {{ Request::is('lowongan*') ? 'active' : '' }}" href="/lowongan">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-desktop text-danger text-sm opacity-10"></i>
                     </div>
@@ -98,7 +98,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/bimbingan">
+                <a class="nav-link {{ Request::is('bimbingan*') ? 'active' : '' }}" href="/bimbingan">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-graduation-cap text-danger text-sm opacity-10"></i>
                     </div>
@@ -106,7 +106,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/lokasi">
+                <a class="nav-link {{ Request::is('lokasi*') ? 'active' : '' }}" href="/lokasi">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-map-marker-alt text-danger text-sm opacity-10"></i>
                     </div>
@@ -114,7 +114,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/wilayah">
+                <a class="nav-link {{ Request::is('wilayah*') ? 'active' : '' }}" href="/wilayah">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-map text-danger text-sm opacity-10"></i>
                     </div>
@@ -122,7 +122,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/feedback">
+                <a class="nav-link {{ Request::is('feedback*') ? 'active' : '' }}" href="/feedback">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-comments text-warning text-sm opacity-10"></i>
                     </div>
@@ -133,7 +133,7 @@
             <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
             <li class="nav-item "@auth @if(auth()->user()->user_type === 'Super Admin') '' @else style="display:none;" @endif @endauth>
-                <a class="nav-link " href="/pengaturanadmin">
+                <a class="nav-link {{ Request::is('pengaturanadmin*') ? 'active' : '' }}" href="/pengaturanadmin">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
                     </div>
