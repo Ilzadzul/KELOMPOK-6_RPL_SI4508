@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\DB;
 
 class ReviewRatingController extends Controller
 {
-    // Menampilkan isi database
+    // Menampilkan isi database getin table review_ratings
     public function index()
     {
         $reviewRatings = ReviewBintang::all(['comments', 'star_rating']); // Dan ini
         return view('rating', compact('reviewRatings'));
     }
 
-    // Menghapus isi database
+    // Menghapus isi database getin table review_ratings
     public function destroy($id)
     {
         DB::table('review_ratings')->where('id', $id)->delete(); // Dan ini
