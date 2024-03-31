@@ -1,0 +1,29 @@
+class Penduduk:
+    def __init__(self, nama, usia, pelatihan):
+        self.nama = nama
+        self.usia = usia
+        self.pelatihan = pelatihan
+
+# Daftar penduduk yang telah menyelesaikan pelatihan x
+penduduk_list = [
+    Penduduk("Ilza", 30, "X"),
+    Penduduk("Dzul", 25, "X"),
+]
+
+def cari_penduduk_pelatihan(penduduk_list, pelatihan):
+    penduduk_pelatihan = [penduduk for penduduk in penduduk_list if penduduk.pelatihan == pelatihan]
+    return penduduk_pelatihan
+
+def main():
+    # Pencarian penduduk yang telah menyelesaikan pelatihan x
+    hasil_pencarian = cari_penduduk_pelatihan(penduduk_list, "X")
+    
+    if hasil_pencarian:
+        print("Penduduk yang telah menyelesaikan pelatihan X:")
+        for penduduk in hasil_pencarian:
+            print(f"Nama: {penduduk.nama}, Usia: {penduduk.usia}")
+        print(f"Total penduduk yang telah menyelesaikan pelatihan X: {len(hasil_pencarian)}")
+    else:
+        print("Tidak ada penduduk yang telah menyelesaikan pelatihan X.")
+
+if __name__ == "__main__":
