@@ -70,3 +70,6 @@ Route::get('/review_ratings', [ReviewRatingController::class, 'index']);
 
 Route::get('/ratings', [ReviewRatingController::class, 'showRatings']);
 
+Route::get('/formulirpenduduk', function () {
+    return view('formulirpenduduk');
+});
