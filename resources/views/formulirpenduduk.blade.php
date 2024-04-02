@@ -4,8 +4,8 @@
     <div class="card mb-3 m-lg-6 p-4"> 
         <form>
             <div class="card mb-3 m-lg-6 p-8 shadow-none" style="background-color: #F3FAFF;">
-                <h3 class="text-center">Formulir Data Penduduk</h3>
-                <h5>Step 1 : Melengkapi Data Diri</h5>
+                <h2 class="text-center">Formulir Data Penduduk</h2>
+                <h5 class="bold">Step 1 : Melengkapi Data Diri</h5>
                 <div id="form-fields">
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Lengkap</label>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">NIK</label>
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">No. KTP</label>
                         <div class="col-sm-10">
                             <input type="password" class="form-control" id="inputPassword3">
                         </div>
