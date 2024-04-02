@@ -14,13 +14,7 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">TTL</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alamat</label>
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tempat/Tanggal Lahir</label>
                         <div class="col-sm-10">
                             <input type="email" class="form-control" id="inputEmail3">
                         </div>
@@ -32,7 +26,25 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Agama</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alamat Lengkap</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Telepon</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alamat Email</label>
                         <div class="col-sm-10">
                             <input type="email" class="form-control" id="inputEmail3">
                         </div>
@@ -44,6 +56,87 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mb-3">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <button type="button" class="btn btn-primary mt-3" onclick="addFormField()">
+                            <i class="fas fa-plus"></i> Tambah Kolom
+                        </button>
+                    </div>
+                </div>
+                <h5 class="bold">Step 2 : Melengkapi Riwayat Pendidikan</h5>
+                <div id="form-fields">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Riwayat Pendidikan Terakhir</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                <div id="form-fields">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Institusi</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                <div id="form-fields">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Jurusan</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                <div id="form-fields">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tahun Masuk</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                <div id="form-fields">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Tahun Lulus (Sesuai Dengan Ijazah)</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                <div class="row mb-3">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <button type="button" class="btn btn-primary mt-3" onclick="addFormField()">
+                            <i class="fas fa-plus"></i> Tambah Kolom
+                        </button>
+                    </div>
+                </div>
+                <h5 class="bold">Step 3 : Pengalaman Kerja</h5>
+                <div id="form-fields">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Pengalaman Kerja</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                <div id="form-fields">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Bidang Pekerjaan</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                <div id="form-fields">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Dari Tahun - Hingga</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                <div id="form-fields">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Posisi Sebagai</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
                 <div class="row mb-3">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-10">
