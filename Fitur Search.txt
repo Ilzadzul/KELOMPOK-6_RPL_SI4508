@@ -1,29 +1,55 @@
-class Penduduk:
-    def __init__(self, nama, usia, pelatihan):
-        self.nama = nama
-        self.usia = usia
-        self.pelatihan = pelatihan
+// routes/web.php
 
-# Daftar penduduk yang telah menyelesaikan pelatihan x
-penduduk_list = [
-    Penduduk("Ilza", 30, "X"),
-    Penduduk("Dzul", 25, "X"),
-]
+use App\Http\Controllers\SuperAdminController;
 
-def cari_penduduk_pelatihan(penduduk_list, pelatihan):
-    penduduk_pelatihan = [penduduk for penduduk in penduduk_list if penduduk.pelatihan == pelatihan]
-    return penduduk_pelatihan
+Route::get('/cari-penduduk-pelatihan-x', [SuperAdminController::class, 'cariPendudukPelatihanX']);
+// app/Http/Controllers/SuperAdminController.php
 
-def main():
-    # Pencarian penduduk yang telah menyelesaikan pelatihan x
-    hasil_pencarian = cari_penduduk_pelatihan(penduduk_list, "X")
-    
-    if hasil_pencarian:
-        print("Penduduk yang telah menyelesaikan pelatihan X:")
-        for penduduk in hasil_pencarian:
-            print(f"Nama: {penduduk.nama}, Usia: {penduduk.usia}")
-        print(f"Total penduduk yang telah menyelesaikan pelatihan X: {len(hasil_pencarian)}")
-    else:
-        print("Tidak ada penduduk yang telah menyelesaikan pelatihan X.")
+namespace App\Http\Controllers;
 
-if __name__ == "__main__":
+use App\Models\Penduduk;
+use Illuminate\Http\Request;
+
+class SuperAdminController extends Controller
+{
+    public function cariPendudukPelatihanX(Request $request)
+    {
+        // Mencari penduduk yang telah menyelesaikan pelatihan X
+        $pendudukPelatihanX = Penduduk::where('pelatihan', 'X')->get();
+
+        return view('hasil_pencarian', compact('pendudukPelatihanX'));
+    }
+}
+<!-- resources/views/hasil_pencarian.blade.php -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Pencarian Penduduk Pelatihan X</title>
+</head>
+<body>
+    <h2>Hasil Pencarian Penduduk Pelatihan X</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Usia</th>
+                <th>Pelatihan</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($pendudukPelatihanX as $penduduk)
+                <tr>
+                    <td>{{ $penduduk->nama }}</td>
+                    <td>{{ $penduduk->usia }}</td>
+                    <td>{{ $penduduk->pelatihan }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    <p>Total penduduk yang telah menyelesaikan pelatihan X: {{ $pendudukPelatihanX->count() }}</p>
+</body>
+</html>
+
