@@ -4,6 +4,7 @@ use App\Models\Login;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PendudukController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
@@ -30,22 +31,25 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/pengaturanadmin', function () {
-    return view('pengaturanadmin');
-});
+// Route::get('/pengaturanadmin', function () {
+//     return view('pengaturanadmin');
+// });
 // Add Admin Routes
-Route::get('/pengaturanadmin', [AdminController::class, 'index'])->name('pengaturanadmin');
+Route::get('/pengaturanadmin', [AdminController::class, 'index'])->name('pengaturanadmin')-> middleware('auth', 'superadmin');
 
-Route::get('/tambahadmin', [AdminController::class, 'create'])->name('tambahadmin');
-Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
+Route::get('/tambahadmin', [AdminController::class, 'create'])->name('tambahadmin')-> middleware('auth', 'superadmin');
+Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store')-> middleware('auth', 'superadmin');
 
-Route::get('/editadmin/{id}', [AdminController::class, 'edit'])->name('editadmin');
-Route::put('/updateadmin/{id}', [AdminController::class, 'update'])->name('updateadmin');
-Route::get('/deleteadmin/{id}', [AdminController::class, 'destroy'])->name('deleteadmin');
+Route::get('/editadmin/{id}', [AdminController::class, 'edit'])->name('editadmin')-> middleware('auth', 'superadmin');
+Route::put('/updateadmin/{id}', [AdminController::class, 'update'])->name('updateadmin')-> middleware('auth', 'superadmin');
+Route::delete('/deleteadmin/{id}', [AdminController::class, 'destroy'])->name('deleteadmin')-> middleware('auth', 'superadmin');
 
 // Route::get('/databasependuduk', function () {
 //     return view('databasependuduk');
 // });
+Route::get('/formulirpenduduk', [PendudukController::class, 'create'])->name('formulirpenduduk')-> middleware('auth');;
+Route::post('/formulirpenduduk', [PendudukController::class, 'store'])->name('formulirpenduduk.store')-> middleware('auth');;
+
 
 Route::get('/databasependuduk', [DatabaseController::class, 'index'])->name('databasependuduk.index');
 Route::get('/tambahdatabase', [DatabaseController::class, 'create'])->name('tambahdatabase');
@@ -69,7 +73,3 @@ Route::delete('/review_ratings/{id}', [ReviewRatingController::class, 'destroy']
 Route::get('/review_ratings', [ReviewRatingController::class, 'index']);
 
 Route::get('/ratings', [ReviewRatingController::class, 'showRatings']);
-
-Route::get('/formulirpenduduk', function () {
-    return view('formulirpenduduk');
-});
