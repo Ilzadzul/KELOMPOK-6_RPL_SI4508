@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SuperAdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::get('/cari-penduduk-pelatihan-x', [SuperAdminController::class, 'cariPendudukPelatihanX']);
+// app/Http/Controllers/SuperAdminController.php
+
+
+
+
