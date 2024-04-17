@@ -80,6 +80,7 @@ class AdminController extends Controller
             // print wrong messge
             dd($e->getMessage());
         }
+        Log::info('Pool Created');
 
         // Redirect to the admin settings page or wherever you want
         return redirect()->route('pengaturanadmin')->with('success', 'Admin added successfully.');

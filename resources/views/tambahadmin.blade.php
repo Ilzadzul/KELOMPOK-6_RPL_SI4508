@@ -60,7 +60,7 @@
 
                                     <div class="form-group row">
                                         <label for="password" class="col-sm-2 col-form-label">Password</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-12">
                                             <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Enter your password">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -72,7 +72,7 @@
 
                                     <div class="form-group row">
                                         <label for="password_confirmation" class="col-sm-2 col-form-label">Confirm Password</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-12">
                                             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password">
                                         </div>
                                     </div>
