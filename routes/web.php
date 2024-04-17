@@ -4,6 +4,7 @@ use App\Models\Login;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\PendudukController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AuthController;
@@ -13,6 +14,19 @@ use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SuperAdminController;
 
+=======
+use App\Http\Controllers\SuperAdminController;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+>>>>>>> faa845d30e7ac45adfa337552ab6681d0e1a5037
 
 
 
@@ -20,6 +34,7 @@ use App\Http\Controllers\SuperAdminController;
 Route::get('/', function () {
     return redirect('/login');
 });
+<<<<<<< HEAD
 Route::post('/reset-password/{user}', [ResetPasswordController::class, 'reset'])->name('reset-password');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
@@ -76,3 +91,14 @@ Route::get('/review_ratings', [ReviewRatingController::class, 'index']);
 
 Route::get('/ratings', [ReviewRatingController::class, 'showRatings']);
 Route::get('/cari-penduduk-pelatihan-x', [SuperAdminController::class, 'cariPendudukPelatihanX']);
+=======
+
+
+
+Route::get('/cari-penduduk-pelatihan-x', [SuperAdminController::class, 'cariPendudukPelatihanX']);
+// app/Http/Controllers/SuperAdminController.php
+
+
+
+
+>>>>>>> faa845d30e7ac45adfa337552ab6681d0e1a5037
