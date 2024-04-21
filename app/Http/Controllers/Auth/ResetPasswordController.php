@@ -15,7 +15,7 @@ class ResetPasswordController extends Controller
         $user->password = Hash::make('123456');
         $user->save();
 
-        return redirect()->back()->with('success', 'Password reset successfully to "123456"');
+        return redirect()->back()->with('success', 'Password reset successfully to 123456');
     }
 
 }

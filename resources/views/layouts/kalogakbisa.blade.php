@@ -334,6 +334,8 @@
     </div>
 
     @include('layouts.partial.script')
+    @yield('scripts')
+    @stack('scripts')
 </body>
 
 </html>
