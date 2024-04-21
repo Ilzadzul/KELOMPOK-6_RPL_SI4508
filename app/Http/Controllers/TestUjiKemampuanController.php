@@ -36,7 +36,7 @@ class TestUjiKemampuanController extends Controller
 
     public function edit(TestUjiKemampuan $test)
     {
-        // Menampilkan form untuk mengedit test uji kemampuan yang ada
+        // Menampilkan form untuk mengedit test uji yang ada
         return view('test-uji-kemampuan.edit', compact('test'));
     }
 
@@ -46,7 +46,7 @@ class TestUjiKemampuanController extends Controller
         $request->validate([
             'judul' => 'required|string',
             'deskripsi' => 'required|string',
-            // tambahkan validasi lainnya sesuai kebutuhan
+            
         ]);
 
         // Memperbarui data test uji kemampuan yang ada
@@ -57,7 +57,7 @@ class TestUjiKemampuanController extends Controller
 
     public function destroy(TestUjiKemampuan $test)
     {
-        // Menghapus data test uji kemampuan yang ada
+        // Menghapus data test uji  yang ada
         $test->delete();
 
         return redirect()->route('test-uji-kemampuan.index')->with('success', 'Test uji kemampuan berhasil dihapus.');

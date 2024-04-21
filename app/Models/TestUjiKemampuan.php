@@ -9,6 +9,6 @@ class TestUjiKemampuan extends Model
 {
     protected $table = 'test_uji_kemampuan'; 
 
-    protected $fillable = ['judul', 'deskripsi', 'tanggal', 'durasi']; // Kolom yang dapat diisi
+    protected $fillable = ['judul', 'deskripsi', 'tanggal', 'durasi']; 
 
 }
