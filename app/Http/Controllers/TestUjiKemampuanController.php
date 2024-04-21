@@ -58,7 +58,7 @@ class TestUjiKemampuanController extends Controller
 
     public function destroy(TestUjiKemampuan $test)
     {
-        // Menghapus data test uji kemampuan yang ada
+        // Menghapus data test uji yang ada
         $test->delete();
 
         return redirect()->route('test-uji-kemampuan.index')->with('success', 'Test uji  berhasil dihapus.');

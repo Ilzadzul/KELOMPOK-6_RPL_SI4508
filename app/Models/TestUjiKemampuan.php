@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TestUjiKemampuan extends Model
 {
-    protected $table = 'test_uji_kemampuan'; // Nama tabel dalam database
+    protected $table = 'test_uji_kemampuan'; // 
 
     protected $fillable = ['judul', 'deskripsi', 'tanggal', 'durasi']; // Kolom yang dapat diisi
-
  
 }
