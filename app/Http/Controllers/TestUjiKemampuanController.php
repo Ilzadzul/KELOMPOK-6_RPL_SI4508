@@ -64,3 +64,4 @@ class TestUjiKemampuanController extends Controller
         return redirect()->route('test-uji-kemampuan.index')->with('success', 'Test uji  berhasil dihapus.');
     }
 }
+
