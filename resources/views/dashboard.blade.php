@@ -165,7 +165,7 @@
         <div class="card ">
           <div class="card-header pb-0 p-3">
             <div class="d-flex justify-content-between">
-              <h6 class="mb-2">Sales by Country</h6>
+              <h6 class="mb-2">Lowongan Pekerjaan</h6>
             </div>
           </div>
           <div class="table-responsive">
