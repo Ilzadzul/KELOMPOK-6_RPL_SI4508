@@ -5,10 +5,10 @@
         <div class="col-12">
             <div class="card border shadow-xs mb-4">
                 <div class="card-header border-bottom pb-0">
-                    <div class="d-sm-flex align-items-center">
+                    <div class="d-sm-flex align-items-center justify-content-center">
                         <div>
-                            <h6 class="font-weight-semibold text-lg mb-0">Review</h6>
-                            <p class="text-sm">Masukkan Feedback Anda</p>
+                        <h6 class="font-weight-semibold text-lg mb-0">Review</h6>
+                        <p class="text-sm">Masukkan Feedback Anda</p>
                         </div>
                     </div>
                 </div>
@@ -90,15 +90,13 @@
         <div class="row">
             <div class="col-12">
                 <div class="card border shadow-xs mb-4">
-                    <div class="card-header border-bottom pb-0">
-
-
-                        <div class="d-sm-flex align-items-center">
-                            <div>
-                                <h6 class="font-weight-semibold text-lg mb-0"></h6>
-                                <p class="text-sm">Review rating</p>
-                            </div>
+                <div class="card-header border-bottom pb-0">
+                    <div class="d-sm-flex align-items-center justify-content-center">
+                        <div>
+                        <h6 class="font-weight-semibold text-lg mb-0"></h6>
+                        <p class="text-sm">Review rating</p>
                         </div>
+                    </div>
                     </div>
                     <div class="card-body px-0 py-0">
                         <div class="table-responsive p-0">
@@ -153,7 +151,6 @@
                         @endif
                         </div>
                         {{-- isi --}}
-
                         {{-- end isi --}}
                     </div>
                 </div>
@@ -260,5 +257,8 @@
             .rated > input:checked ~ label:hover ~ label,
             .rated > label:hover ~ input:checked ~ label {
             color: #c59b08;
+            }
+            .card-header {
+            text-align: center;
             }
 </style>
