@@ -37,7 +37,7 @@ class ReviewRatingController extends Controller
 
     public function showRatings()
     {
-        // Mendapatkan tipe pengguna saat ini
+        // Mendapatkan tipe pengguna saat iniii
         $userType = Auth::user()->user_type;
     
         // Mendapatkan semua data review dan rating
