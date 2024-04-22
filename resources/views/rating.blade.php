@@ -1,5 +1,6 @@
 @extends('layouts.kalogakbisa')
 @section('content')
+@if($userType !== 'Super Admin')
 <div class="container-fluid py-4 px-5">
     <div class="row">
         <div class="col-12">
@@ -82,6 +83,8 @@
         </div>
     </div>
 </div>
+@endif
+
 
 <div style="margin-top: 50px;"></div>
 {{-- dua --}}
@@ -137,12 +140,15 @@
 
                                                 </td>
                                                 <td class="">
-                                                    <form action="{{ route('review_ratings.destroy', $reviewRating->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn-transparent rounded-pill text-sm text-light font-weight-semibold mb-0" style="background-color:RGB(220, 53, 69); border-color: rgba(0, 128, 0, 0);">Delete</button>
-                                                    </form>
+                                                    @if($userType === 'Super Admin')
+                                                        <form action="{{ route('review_ratings.destroy', $reviewRating->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn-transparent rounded-pill text-sm text-light font-weight-semibold mb-0" style="background-color:RGB(220, 53, 69); border-color: rgba(0, 128, 0, 0);">Delete</button>
+                                                        </form>
+                                                    @endif
                                                 </td>
+
                                             </tr>
                                         @endforeach
                                 </tbody>
