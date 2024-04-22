@@ -25,6 +25,7 @@ Route::get('/cari-penduduk-pelatihan-x', [SearchController::class, 'cariPenduduk
 use App\Http\Controllers\SuperAdminController;
 
 Route::get('/cari-penduduk', [SearchController::class, 'cariPenduduk']);
+Route::get('/cari-penduduk', [SuperAdminController::class, 'cariPenduduk']);
 
 
 
