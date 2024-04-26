@@ -75,3 +75,4 @@ Route::get('/review_ratings', [ReviewRatingController::class, 'index']);
 
 Route::get('/ratings', [ReviewRatingController::class, 'showRatings']);
 Route::get('/cari-penduduk-pelatihan-x', [SuperAdminController::class, 'cariPendudukPelatihanX']);
+Route::get('/cari-penduduk', [SuperAdminController::class, 'cariPenduduk']);
