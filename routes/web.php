@@ -78,10 +78,5 @@ Route::get('/ratings', [ReviewRatingController::class, 'showRatings']);
 Route::get('/cari-penduduk-pelatihan-x', [SuperAdminController::class, 'cariPendudukPelatihanX']);
 
 
-Route::get('/testujikemampuan', [TestUjiKemampuanController::class, 'index'])->name('testujikemampuan.index');
-Route::get('/testujikemampuan/create', [TestUjiKemampuanController::class, 'create'])->name('testujikemampuan.create');
-Route::post('/testujikemampuan', [TestUjiKemampuanController::class, 'store'])->name('testujikemampuan.store');
-Route::get('/testujikemampuan/{id}/edit', [TestUjiKemampuanController::class, 'edit'])->name('testujikemampuan.edit');
-Route::put('/testujikemampuan/{id}', [TestUjiKemampuanController::class, 'update'])->name('testujikemampuan.update');
-Route::delete('/testujikemampuan/{id}', [TestUjiKemampuanController::class, 'destroy'])->name('testujikemampuan.destroy');
 
+Route::get('/cari-penduduk', [SuperAdminController::class, 'cariPenduduk']);

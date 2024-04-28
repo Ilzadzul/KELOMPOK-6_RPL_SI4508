@@ -1,14 +1,15 @@
 @extends('layouts.kalogakbisa')
 @section('content')
+@if($userType !== 'Super Admin')
 <div class="container-fluid py-4 px-5">
     <div class="row">
         <div class="col-12">
             <div class="card border shadow-xs mb-4">
                 <div class="card-header border-bottom pb-0">
-                    <div class="d-sm-flex align-items-center">
+                    <div class="d-sm-flex align-items-center justify-content-center">
                         <div>
-                            <h6 class="font-weight-semibold text-lg mb-0">Review</h6>
-                            <p class="text-sm">Masukkan Feedback Anda</p>
+                        <h6 class="font-weight-semibold text-lg mb-0">Review</h6>
+                        <p class="text-sm">Masukkan Feedback Anda</p>
                         </div>
                     </div>
                 </div>
@@ -82,6 +83,8 @@
         </div>
     </div>
 </div>
+@endif
+
 
 <div style="margin-top: 50px;"></div>
 {{-- dua --}}
@@ -90,15 +93,13 @@
         <div class="row">
             <div class="col-12">
                 <div class="card border shadow-xs mb-4">
-                    <div class="card-header border-bottom pb-0">
-
-
-                        <div class="d-sm-flex align-items-center">
-                            <div>
-                                <h6 class="font-weight-semibold text-lg mb-0"></h6>
-                                <p class="text-sm">Review rating</p>
-                            </div>
+                <div class="card-header border-bottom pb-0">
+                    <div class="d-sm-flex align-items-center justify-content-center">
+                        <div>
+                        <h6 class="font-weight-semibold text-lg mb-0"></h6>
+                        <p class="text-sm">Review rating</p>
                         </div>
+                    </div>
                     </div>
                     <div class="card-body px-0 py-0">
                         <div class="table-responsive p-0">
@@ -139,12 +140,15 @@
 
                                                 </td>
                                                 <td class="">
-                                                    <form action="{{ route('review_ratings.destroy', $reviewRating->id) }}" method="POST">
+                                                    @if($userType === 'Super Admin')
+                                                        <form action="{{ route('review_ratings.destroy', $reviewRating->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn-transparent rounded-pill text-sm text-light font-weight-semibold mb-0" style="background-color:RGB(220, 53, 69); border-color: rgba(0, 128, 0, 0);">Delete</button>
-                                                    </form>
+                                                        <button type="submit" class="btn-delete">Delete</button>
+                                                        </form>
+                                                    @endif
                                                 </td>
+
                                             </tr>
                                         @endforeach
                                 </tbody>
@@ -153,7 +157,6 @@
                         @endif
                         </div>
                         {{-- isi --}}
-
                         {{-- end isi --}}
                     </div>
                 </div>
@@ -260,5 +263,28 @@
             .rated > input:checked ~ label:hover ~ label,
             .rated > label:hover ~ input:checked ~ label {
             color: #c59b08;
+            }
+            .card-header {
+            text-align: center;
+            }
+            .btn-delete {
+                background-color: RGB(220, 53, 69);
+                border-color: rgba(0, 128, 0, 0);
+                color: white;
+                padding: 10px 24px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+                border-radius: 12px;
+            }
+
+            .btn-delete:hover {
+                background-color: white;
+                color: black;
+                border: 2px solid RGB(220, 53, 69);
             }
 </style>

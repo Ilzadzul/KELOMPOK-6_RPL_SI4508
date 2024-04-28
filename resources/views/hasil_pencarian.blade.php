@@ -30,4 +30,16 @@
     <p>Total penduduk yang telah menyelesaikan pelatihan X: {{ $pendudukPelatihanX->count() }}</p>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Pencarian Penduduk</title>
+</head>
+<body>
+    <h2>Hasil Pencarian Penduduk</h2>
+    <p>Jumlah penduduk dengan pekerjaan {{ $pekerjaan }} di wilayah {{ $wilayah }} adalah: {{ $jumlahPenduduk }}</p>
+</body>
+</html>
 
