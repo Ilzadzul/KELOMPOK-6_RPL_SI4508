@@ -3,63 +3,93 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TestUjiKemampuan; 
+use App\Models\TestUjiKemampuan;
+use Illuminate\Validation\Rule;
+
 class TestUjiKemampuanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Mengambil semua data test uji kemampuan
-        $tests = TestUjiKemampuan::all();
-        return view('test-uji-kemampuan.index', compact('tests'));
+        $keyword = $request->keyword;
+        $tests = TestUjiKemampuan::where('nama_test', 'LIKE', '%'.$keyword.'%')
+            ->orWhere('tanggal_pelaksanaan', 'LIKE', '%'.$keyword.'%')
+            ->orWhere('tempat_pelaksanaan', 'LIKE', '%'.$keyword.'%')
+            ->orWhere('daftar_anggota_test', 'LIKE', '%'.$keyword.'%')
+            ->paginate(5);
+
+        return view('testujikemampuan.index', ['tests' => $tests, 'keyword' => $keyword]);
     }
 
     public function create()
     {
-        // Menampilkan form untuk membuat test uji kemampuan baru
-        return view('test-uji-kemampuan.create');
+        return view('testujikemampuan.create');
     }
 
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate([
-            'judul' => 'required|string',
-            'deskripsi' => 'required|string',
-            // tambahkan validasi lainnya sesuai kebutuhan
+            'nama_test' => 'required',
+            'tanggal_pelaksanaan' => 'required|date',
+            'tempat_pelaksanaan' => 'required',
+            'daftar_anggota_test' => 'nullable',
         ]);
 
-        // Membuat objek TestUjiKemampuan baru dan menyimpannya ke dalam database
-        TestUjiKemampuan::create($request->all());
+        try {
+            TestUjiKemampuan::create([
+                'nama_test' => $request->input('nama_test'),
+                'tanggal_pelaksanaan' => $request->input('tanggal_pelaksanaan'),
+                'tempat_pelaksanaan' => $request->input('tempat_pelaksanaan'),
+                'daftar_anggota_test' => $request->input('daftar_anggota_test'),
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
 
-        return redirect()->route('test-uji-kemampuan.index')->with('success', 'Test uji kemampuan berhasil ditambahkan.');
+        return redirect()->route('testujikemampuan.index')
+            ->with('success', 'Test uji kemampuan berhasil ditambahkan.');
     }
 
-    public function edit(TestUjiKemampuan $test)
+    public function edit($id)
     {
-        // Menampilkan form untuk mengedit test uji yang ada
-        return view('test-uji-kemampuan.edit', compact('test'));
+        $test = TestUjiKemampuan::findOrFail($id);
+        return view('testujikemampuan.edit', compact('test'));
     }
 
-    public function update(Request $request, TestUjiKemampuan $test)
+    public function update(Request $request, $id)
     {
-        // Validasi input
         $request->validate([
-            'judul' => 'required|string',
-            'deskripsi' => 'required|string',
-            
+            'nama_test' => 'required',
+            'tanggal_pelaksanaan' => 'required|date',
+            'tempat_pelaksanaan' => 'required',
+            'daftar_anggota_test' => 'nullable',
         ]);
 
-        // Memperbarui data test uji kemampuan yang ada
-        $test->update($request->all());
+        try {
+            $test = TestUjiKemampuan::findOrFail($id);
+            $test->update([
+                'nama_test' => $request->input('nama_test'),
+                'tanggal_pelaksanaan' => $request->input('tanggal_pelaksanaan'),
+                'tempat_pelaksanaan' => $request->input('tempat_pelaksanaan'),
+                'daftar_anggota_test' => $request->input('daftar_anggota_test'),
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
 
-        return redirect()->route('test-uji-kemampuan.index')->with('success', 'Test uji kemampuan berhasil diperbarui.');
+        return redirect()->route('testujikemampuan.index')
+            ->with('success', 'Test uji kemampuan berhasil diperbarui.');
     }
 
-    public function destroy(TestUjiKemampuan $test)
+    public function destroy($id)
     {
-        // Menghapus data test uji  yang ada
-        $test->delete();
+        try {
+            $test = TestUjiKemampuan::findOrFail($id);
+            $test->delete();
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
 
-        return redirect()->route('test-uji-kemampuan.index')->with('success', 'Test uji kemampuan berhasil dihapus.');
+        return redirect()->route('testujikemampuan.index')
+            ->with('success', 'Test uji kemampuan berhasil dihapus.');
     }
 }

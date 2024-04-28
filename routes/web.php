@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\TestUjiKemampuanController;
 
 
 
@@ -75,4 +76,7 @@ Route::get('/review_ratings', [ReviewRatingController::class, 'index']);
 
 Route::get('/ratings', [ReviewRatingController::class, 'showRatings']);
 Route::get('/cari-penduduk-pelatihan-x', [SuperAdminController::class, 'cariPendudukPelatihanX']);
+
+
+
 Route::get('/cari-penduduk', [SuperAdminController::class, 'cariPenduduk']);

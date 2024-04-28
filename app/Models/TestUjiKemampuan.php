@@ -7,8 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class TestUjiKemampuan extends Model
 {
-    protected $table = 'test_uji_kemampuan'; 
+    use HasFactory;
 
-    protected $fillable = ['judul', 'deskripsi', 'tanggal', 'durasi']; 
+    protected $table = 'test_uji_kemampuan';
 
+    protected $fillable = [
+        'nama_test',
+        'tanggal_pelaksanaan',
+        'tempat_pelaksanaan',
+        'daftar_anggota_test',
+    ];
 }
