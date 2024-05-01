@@ -80,3 +80,15 @@ Route::get('/cari-penduduk-pelatihan-x', [SuperAdminController::class, 'cariPend
 
 
 Route::get('/cari-penduduk', [SuperAdminController::class, 'cariPenduduk']);
+
+Route::get('/kategoripekerjaan', function () {
+    return view('kategoripekerjaan');
+});
+
+Route::get('/produksi-manufaktur', function () {
+    return view('produksi-manufaktur');
+})->name('produksi-manufaktur');
+
+Route::get('/tambahkategori', function () {
+    return view('tambahkategori');
+})->name('tambahkategori');
