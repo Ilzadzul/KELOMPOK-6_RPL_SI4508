@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('kontak*') ? 'active' : '' }}" href="/kontak">
+                <a class="nav-link {{ Request::is('contacts*') ? 'active' : '' }}" href="/contacts">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-phone text-warning text-sm opacity-10"></i>
                     </div>

@@ -13,6 +13,8 @@ use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\TestUjiKemampuanController;
+use App\Http\Controllers\ContactController;
+
 
 
 
@@ -92,3 +94,9 @@ Route::get('/produksi-manufaktur', function () {
 Route::get('/tambahkategori', function () {
     return view('tambahkategori');
 })->name('tambahkategori');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('contacts', ContactController::class);
