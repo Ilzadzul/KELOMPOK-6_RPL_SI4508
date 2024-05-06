@@ -4,8 +4,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <script src="https://cdn.tiny.cloud/1/ezor9xuvul92imvy9jvy3uc5nhxipykdtn3adijq5eojsw3q/tinymce/5/tinymce.min.js"></script>
+  <script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+  </script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <title>
     Get-in
   </title>
@@ -18,7 +24,7 @@
         <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html " target="_blank">
-            <img src="./assets/img/Get-in-Logo.png" class="navbar-brand-img h-100" alt="main_logo">
+            <img src="/assets/img/Get-in-Logo.png" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-1 font-weight-bold">Get-in Dashboard</span>
         </a>
         </div>
@@ -34,7 +40,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('kontak*') ? 'active' : '' }}" href="/kontak">
+                <a class="nav-link {{ Request::is('contacts*') ? 'active' : '' }}" href="/contacts">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-phone text-warning text-sm opacity-10"></i>
                     </div>

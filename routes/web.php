@@ -12,6 +12,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\TestUjiKemampuanController;
+use App\Http\Controllers\ContactController;
+
 
 
 
@@ -75,4 +78,25 @@ Route::get('/review_ratings', [ReviewRatingController::class, 'index']);
 
 Route::get('/ratings', [ReviewRatingController::class, 'showRatings']);
 Route::get('/cari-penduduk-pelatihan-x', [SuperAdminController::class, 'cariPendudukPelatihanX']);
+
+
+
 Route::get('/cari-penduduk', [SuperAdminController::class, 'cariPenduduk']);
+
+Route::get('/kategoripekerjaan', function () {
+    return view('kategoripekerjaan');
+});
+
+Route::get('/produksi-manufaktur', function () {
+    return view('produksi-manufaktur');
+})->name('produksi-manufaktur');
+
+Route::get('/tambahkategori', function () {
+    return view('tambahkategori');
+})->name('tambahkategori');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('contacts', ContactController::class);
