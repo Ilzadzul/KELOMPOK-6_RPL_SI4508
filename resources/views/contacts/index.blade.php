@@ -28,7 +28,7 @@
                                 <td>{{ $contact->phone_number }}</td>
                                 <td>
                                     <a href="{{ route('contacts.edit', $contact) }}" class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('contacts.destroy', $contact) }}" method="POST" style="display:inline;">
+                                    <form action="{{ route('contacts.destroy', $contact) }}" method="POST" style="display:inline;" onsubmit="return confirm('Anda Yakin Untuk Menghapus?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Hapus</button>
@@ -40,6 +40,13 @@
                     </table>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col text-center">
+            <a href="{{ url('/dashboard') }}" class="btn btn-primary">Kembali</a>
         </div>
     </div>
 </div>
