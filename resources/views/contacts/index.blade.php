@@ -7,7 +7,9 @@
                 <div class="card-header">Daftar Kontak</div>
 
                 <div class="card-body">
-                    <a href="{{ route('contacts.create') }}" class="btn btn-primary">Tambah Kontak Baru</a>
+                    @if(Auth::user()->user_type == 'Super Admin')
+                        <a href="{{ route('contacts.create') }}" class="btn btn-primary">Tambah Kontak Baru</a>
+                    @endif
                     <br/><br/>
                     <table class="table table-striped">
                         <thead>
@@ -16,7 +18,9 @@
                                 <th>Wilayah Bertugas</th>
                                 <th>Jabatan</th>
                                 <th>Nomor Telepon</th>
-                                <th>Aksi</th>
+                                @if(Auth::user()->user_type == 'Super Admin')
+                                    <th>Aksi</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -26,14 +30,16 @@
                                 <td>{{ $contact->region }}</td>
                                 <td>{{ $contact->position }}</td>
                                 <td>{{ $contact->phone_number }}</td>
-                                <td>
-                                    <a href="{{ route('contacts.edit', $contact) }}" class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('contacts.destroy', $contact) }}" method="POST" style="display:inline;" onsubmit="return confirm('Anda Yakin Untuk Menghapus?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Hapus</button>
-                                    </form>
-                                </td>
+                                @if(Auth::user()->user_type == 'Super Admin')
+                                    <td>
+                                        <a href="{{ route('contacts.edit', $contact) }}" class="btn btn-warning">Edit</a>
+                                        <form action="{{ route('contacts.destroy', $contact) }}" method="POST" style="display:inline;" onsubmit="return confirm('Anda Yakin Untuk Menghapus?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
