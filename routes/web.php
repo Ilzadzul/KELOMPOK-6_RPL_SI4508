@@ -16,9 +16,6 @@ use App\Http\Controllers\TestUjiKemampuanController;
 use App\Http\Controllers\ContactController;
 
 
-
-
-
 // Login Admin Routes
 Route::get('/', function () {
     return redirect('/login');
