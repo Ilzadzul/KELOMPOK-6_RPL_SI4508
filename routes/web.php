@@ -33,10 +33,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-// Route::get('/pengaturanadmin', function () {
-//     return view('pengaturanadmin');
-// });
-// Add Admin Routes
+Route::get('/wilayah', function () {
+    return view('wilayah');
+});
+
 Route::get('/pengaturanadmin', [AdminController::class, 'index'])->name('pengaturanadmin')-> middleware('auth', 'superadmin');
 
 Route::get('/tambahadmin', [AdminController::class, 'create'])->name('tambahadmin')-> middleware('auth', 'superadmin');
@@ -46,9 +46,6 @@ Route::get('/editadmin/{id}', [AdminController::class, 'edit'])->name('editadmin
 Route::put('/updateadmin/{id}', [AdminController::class, 'update'])->name('updateadmin')-> middleware('auth', 'superadmin');
 Route::delete('/deleteadmin/{id}', [AdminController::class, 'destroy'])->name('deleteadmin')-> middleware('auth', 'superadmin');
 
-// Route::get('/databasependuduk', function () {
-//     return view('databasependuduk');
-// });
 Route::get('/formulirpenduduk', [PendudukController::class, 'create'])->name('formulirpenduduk')-> middleware('auth');;
 Route::post('/formulirpenduduk', [PendudukController::class, 'store'])->name('formulirpenduduk.store')-> middleware('auth');;
 
