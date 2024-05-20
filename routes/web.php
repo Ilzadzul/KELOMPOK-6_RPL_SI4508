@@ -14,6 +14,7 @@ use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\TestUjiKemampuanController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\RekomendasiPekerjaanController;
 
 
 // Login Admin Routes
@@ -77,6 +78,7 @@ Route::get('/cari-penduduk-pelatihan-x', [SuperAdminController::class, 'cariPend
 
 Route::get('/cari-penduduk', [SuperAdminController::class, 'cariPenduduk']);
 
+
 Route::get('/kategoripekerjaan', function () {
     return view('kategoripekerjaan');
 });
@@ -94,3 +96,20 @@ Route::get('/', function () {
 });
 
 Route::resource('contacts', ContactController::class);
+
+// Routes for Test Uji Kemampuan
+Route::get('/test-uji-kemampuan', [TestUjiKemampuanController::class, 'index'])->name('test-uji-kemampuan.index');
+Route::get('/test-uji-kemampuan/create', [TestUjiKemampuanController::class, 'create'])->name('test-uji-kemampuan.create');
+Route::post('/test-uji-kemampuan', [TestUjiKemampuanController::class, 'store'])->name('test-uji-kemampuan.store');
+Route::get('/test-uji-kemampuan/{id}/edit', [TestUjiKemampuanController::class, 'edit'])->name('test-uji-kemampuan.edit');
+Route::put('/test-uji-kemampuan/{id}', [TestUjiKemampuanController::class, 'update'])->name('test-uji-kemampuan.update');
+Route::delete('/test-uji-kemampuan/{id}', [TestUjiKemampuanController::class, 'destroy'])->name('test-uji-kemampuan.destroy');
+
+// Routes for Rekomendasi Pekerjaan
+Route::get('/rekomendasi-pekerjaan', [RekomendasiPekerjaanController::class, 'index'])->name('rekomendasipekerjaan.index');
+Route::get('/rekomendasi-pekerjaan/create', [RekomendasiPekerjaanController::class, 'create'])->name('rekomendasipekerjaan.create');
+Route::post('/rekomendasi-pekerjaan', [RekomendasiPekerjaanController::class, 'store'])->name('rekomendasipekerjaan.store');
+Route::get('/rekomendasi-pekerjaan/{id}/edit', [RekomendasiPekerjaanController::class, 'edit'])->name('rekomendasipekerjaan.edit');
+Route::put('/rekomendasi-pekerjaan/{id}', [RekomendasiPekerjaanController::class, 'update'])->name('rekomendasipekerjaan.update');
+Route::delete('/rekomendasi-pekerjaan/{id}', [RekomendasiPekerjaanController::class, 'destroy'])->name('rekomendasipekerjaan.destroy');
+
