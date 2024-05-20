@@ -46,7 +46,7 @@
       <div class="centered-form">
         <div class="form-card col-xl-4 col-lg-5 col-md-7">
           <div class="card-header pb-0 text-start">
-            <h4 class="font-weight-bolder">Sign In</h4>
+            <h4 class="font-weight-bolder">Log In</h4>
             <p class="mb-0">Enter your username and password to sign in</p>
           </div>
           <div class="card-body">
@@ -65,7 +65,7 @@
                     <label class="form-check-label" for="remember">Remember me</label>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Sign in</button>
+                    <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Log in</button>
                 </div>
             </form>
             @if ($errors->has('login'))

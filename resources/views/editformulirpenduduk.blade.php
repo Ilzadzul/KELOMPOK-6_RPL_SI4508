@@ -6,7 +6,7 @@
             @csrf
             @method('PUT')
             <div class="card mb-3 m-lg-6 p-8 shadow-none" style="background-color: #F3FAFF;">
-                <h2 class="text-center">Formulir Data Penduduk</h2>
+                <h2 class="text-center">Edit Formulir Data Penduduk</h2>
                 <h5 class="bold">Step 1 : Melengkapi Data Diri</h5>
                 <div id="card-body">
                     <div class="row mb-3">

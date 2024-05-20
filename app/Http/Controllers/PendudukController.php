@@ -66,7 +66,7 @@ class PendudukController extends Controller
             'gender' => ['required', Rule::in(['Pria', 'Wanita'])],
             'agama' => ['required', Rule::in(['Islam', 'Kristen', 'Katolik','Hindu','Buddha', 'Khonghucu'])],
             'alamat' => 'required',
-            'phonenumber' => 'required|numeric|digits:12',
+            'phonenumber' => 'required|numeric|regex:/^\d{10,13}$/',
             'email' => 'nullable|email',
             'No_ktp'=> 'required|numeric|digits:16',
 
@@ -141,7 +141,7 @@ class PendudukController extends Controller
             'gender' => ['required', Rule::in(['Pria', 'Wanita'])],
             'agama' => ['required', Rule::in(['Islam', 'Kristen', 'Katolik','Hindu','Buddha', 'Khonghucu'])],
             'alamat' => 'required',
-            'phonenumber' => 'required|numeric|digits:12',
+            'phonenumber' => 'required|numeric|regex:/^\d{10,13}$/',
             'email' => 'nullable|email',
             'No_ktp'=> 'required|numeric|digits:16',
 
