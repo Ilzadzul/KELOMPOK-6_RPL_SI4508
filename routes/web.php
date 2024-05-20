@@ -13,8 +13,8 @@ use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\ReviewRatingController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\TestUjiKemampuanController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RekomendasiPekerjaanController;
-
 
 
 // Login Admin Routes
@@ -82,7 +82,23 @@ Route::get('/cari-penduduk-pelatihan-x', [SuperAdminController::class, 'cariPend
 Route::get('/cari-penduduk', [SuperAdminController::class, 'cariPenduduk']);
 
 
+Route::get('/kategoripekerjaan', function () {
+    return view('kategoripekerjaan');
+});
 
+Route::get('/produksi-manufaktur', function () {
+    return view('produksi-manufaktur');
+})->name('produksi-manufaktur');
+
+Route::get('/tambahkategori', function () {
+    return view('tambahkategori');
+})->name('tambahkategori');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('contacts', ContactController::class);
 
 // Routes for Test Uji Kemampuan
 Route::get('/test-uji-kemampuan', [TestUjiKemampuanController::class, 'index'])->name('test-uji-kemampuan.index');

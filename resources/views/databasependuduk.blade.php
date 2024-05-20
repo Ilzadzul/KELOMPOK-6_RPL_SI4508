@@ -1,6 +1,7 @@
 @extends('layouts.kalogakbisa')
 
 @section('content')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
     <div class="container-fluid py-4 px-5">
         <div class="row">
             <div class="col-12">
@@ -12,7 +13,7 @@
                                 <p class="text-sm">See information about all members</p>
                             </div>
                             <div class="ms-auto d-flex">
-
+                                <button id="exportToExcel" class="btn btn-primary">Export to Excel</button>
                             </div>
                             <form action="" method="GET">
                                 <div class="input-group w-sm-100">
@@ -224,6 +225,36 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            // Function to export data to Excel
+            function exportToExcel() {
+                var data = [
+                    ['Nama Lengkap', 'TTL', 'Jenis Kelamin', 'Agama', 'Nomor Telepon', 'Email', 'NIK',
+                        'Pendidikan Terakhir', 'Institusi', 'Jurusan', 'Tahun masuk', 'Tahun lulus',
+                        'Pengalaman Kerja', 'Bidang', 'Tahun bekerja', 'Posisi'
+                    ],
+                    @forelse ($kontaks as $kontak)
+                        ['{{ $kontak->namalengkap }}', '{{ $kontak->TTL }}', '{{ $kontak->gender }}', '{{ $kontak->agama }}', '{{ $kontak->phonenumber }}', '{{ $kontak->email }}', '{{ $kontak->No_ktp }}',
+                        '{{ $kontak->pendidikan }}', '{{ $kontak->institusi }}', '{{ $kontak->jurusan }}', '{{ $kontak->tahunmasuk }}', '{{ $kontak->tahunlulus }}',
+                        '{{ $kontak->pengalaman }}', '{{ $kontak->bidang }}', '{{ $kontak->tahun }}', '{{ $kontak->posisi }}'
+                        ],
+                    @empty
+                        // No data
+                    @endforelse
+                ];
+
+                var wb = XLSX.utils.book_new();
+                var ws = XLSX.utils.aoa_to_sheet(data);
+                XLSX.utils.book_append_sheet(wb, ws, 'Data');
+                XLSX.writeFile(wb, 'Data.xlsx');
+            }
+
+            $('#exportToExcel').click(function () {
+                exportToExcel();
+            });
+        });
+    </script>
 @endsection
 
 @section('scripts')
