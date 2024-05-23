@@ -44,6 +44,11 @@ return [
             'throw' => false,
         ],
 
+        'testing_downloads' => [
+            'driver' => 'local',
+            'root' => storage_path('C:/Users/Salma/Downloads'), // Specify a directory for testing downloads
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

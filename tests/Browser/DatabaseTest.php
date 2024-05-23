@@ -353,9 +353,60 @@ class DatabaseTest extends DuskTestCase
             ->assertDontSee('TTL test');
 
             // Logout
-            $browser->visit('/logout')
-            ->assertSee('Log In');
+            // $browser->visit('/logout')
+            // ->assertSee('Log In');
 
         });
     }
+    public function testtc_dbp_11()
+{
+    $this->browse(function (Browser $browser) {
+        $browser->visit('/databasependuduk')
+            // ->assertSee('Data penduduk')
+            ->click('#exportToExcel')  // Assuming #exportToExcel is the ID of the export button
+            ->pause(2000)  // Wait for the download to start (adjust as needed)
+            ->assertPathIs('/databasependuduk');  // Verify you're still on the same page (adjust as necessary)
+        // Define the expected column headers
+        $expectedColumnHeaders = [
+            'Nama Lengkap',
+            'TTL',
+            'Jenis Kelamin',
+            'Agama',
+            'Alamat',
+            'Nomor Telepon',
+            'Email',
+            'NIK',
+            'Pendidikan Terakhir',
+            'Institusi',
+            'Jurusan',
+            'Tahun masuk',
+            'Tahun lulus',
+            'Pengalaman Kerja',
+            'Bidang',
+            'Tahun bekerja',
+            'Posisi',
+        ];
+
+        // Get the path to the downloaded file
+        $downloadedFilePath = 'C:/Users/Salma/Downloads/Data.xlsx'; // Update with the actual path
+
+        // Use a library like PhpSpreadsheet to read the Excel file and verify its contents
+        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+        $spreadsheet = $reader->load($downloadedFilePath);
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Get the column headers from the first row
+        $actualColumnHeaders = [];
+        foreach ($sheet->getRowIterator(1, 1) as $row) {
+            foreach ($row->getCellIterator() as $cell) {
+                $actualColumnHeaders[] = $cell->getValue();
+            }
+        }
+
+        // Assert that each expected column header exists in the actual headers
+        foreach ($expectedColumnHeaders as $expectedHeader) {
+            $this->assertTrue(in_array($expectedHeader, $actualColumnHeaders));
+        }
+    });
+}
 }

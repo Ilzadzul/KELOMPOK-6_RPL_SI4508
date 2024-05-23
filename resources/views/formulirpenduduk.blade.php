@@ -67,7 +67,7 @@
                     <div class="row mb-3">
                         <label for="alamat" class="col-sm-2 col-form-label">Alamat Lengkap</label>
                         <div class="col-sm-12">
-                            <textarea type="text" class="form-control @error('alamat') is-invalid @enderror"name="alamat" id="alamat" placeholder="Durian runtuh, Malaysia" value="{{ old('alamat') }}"></textarea>
+                            <textarea class="form-control @error('alamat') is-invalid @enderror"name="alamat" id="alamat" placeholder="Durian runtuh, Malaysia" value="{{ old('alamat') }}"></textarea>
                             @error('alamat')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

@@ -230,12 +230,12 @@
             // Function to export data to Excel
             function exportToExcel() {
                 var data = [
-                    ['Nama Lengkap', 'TTL', 'Jenis Kelamin', 'Agama', 'Nomor Telepon', 'Email', 'NIK',
+                    ['Nama Lengkap', 'TTL', 'Jenis Kelamin', 'Agama', 'Alamat', 'Nomor Telepon', 'Email', 'NIK',
                         'Pendidikan Terakhir', 'Institusi', 'Jurusan', 'Tahun masuk', 'Tahun lulus',
                         'Pengalaman Kerja', 'Bidang', 'Tahun bekerja', 'Posisi'
                     ],
                     @forelse ($kontaks as $kontak)
-                        ['{{ $kontak->namalengkap }}', '{{ $kontak->TTL }}', '{{ $kontak->gender }}', '{{ $kontak->agama }}', '{{ $kontak->phonenumber }}', '{{ $kontak->email }}', '{{ $kontak->No_ktp }}',
+                        ['{{ $kontak->namalengkap }}', '{{ $kontak->TTL }}', '{{ $kontak->gender }}', '{{ $kontak->agama }}','{{ $kontak->alamat }}', '{{ $kontak->phonenumber }}', '{{ $kontak->email }}', '{{ $kontak->No_ktp }}',
                         '{{ $kontak->pendidikan }}', '{{ $kontak->institusi }}', '{{ $kontak->jurusan }}', '{{ $kontak->tahunmasuk }}', '{{ $kontak->tahunlulus }}',
                         '{{ $kontak->pengalaman }}', '{{ $kontak->bidang }}', '{{ $kontak->tahun }}', '{{ $kontak->posisi }}'
                         ],
