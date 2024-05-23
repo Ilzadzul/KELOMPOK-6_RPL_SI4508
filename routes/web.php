@@ -91,10 +91,6 @@ Route::get('/tambahkategori', function () {
     return view('tambahkategori');
 })->name('tambahkategori');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::resource('contacts', ContactController::class);
 
 // Routes for Test Uji Kemampuan
