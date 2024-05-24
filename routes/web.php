@@ -91,6 +91,18 @@ Route::get('/tambahkategori', function () {
     return view('tambahkategori');
 })->name('tambahkategori');
 
+Route::get('/kategoripekerjaan', [KategoriPekerjaanController::class, 'index'])->name('kategoripekerjaan');
+Route::post('/kategoripekerjaan/store', [KategoriPekerjaanController::class, 'store'])->name('kategoripekerjaan.store');
+Route::delete('/kategoripekerjaan/{id}', [KategoriPekerjaanController::class, 'destroy'])->name('kategoripekerjaan.destroy');
+
+Route::post('/tambahkategori', [KategoriPekerjaanController::class, 'store'])->name('tambahkategori.store');
+// Route::get('/tambahkategori', [KategoriPekerjaanController::class, 'create'])->name('tambahkategori.create');
+Route::get('/tambahkategori', [KategoriPekerjaanController::class, 'create'])->name('tambahkategori.create');
+Route::resource('/tambahkategori/posts', KategoriPekerjaanController::class)->middleware('auth');
+// routes dari Produksi Manufaktur
+Route::get('/job/edit', [JobController::class, 'edit'])->name('job.edit');
+Route::post('/job/update', [JobController::class, 'update'])->name('job.update');
+
 Route::resource('contacts', ContactController::class);
 
 // Routes for Test Uji Kemampuan
@@ -109,14 +121,3 @@ Route::get('/rekomendasi-pekerjaan/{id}/edit', [RekomendasiPekerjaanController::
 Route::put('/rekomendasi-pekerjaan/{id}', [RekomendasiPekerjaanController::class, 'update'])->name('rekomendasipekerjaan.update');
 Route::delete('/rekomendasi-pekerjaan/{id}', [RekomendasiPekerjaanController::class, 'destroy'])->name('rekomendasipekerjaan.destroy');
 
-Route::get('/kategoripekerjaan', [KategoriPekerjaanController::class, 'index'])->name('kategoripekerjaan');
-Route::post('/kategoripekerjaan/store', [KategoriPekerjaanController::class, 'store'])->name('kategoripekerjaan.store');
-Route::delete('/kategoripekerjaan/{id}', [KategoriPekerjaanController::class, 'destroy'])->name('kategoripekerjaan.destroy');
-
-Route::post('/tambahkategori', [KategoriPekerjaanController::class, 'store'])->name('tambahkategori.store');
-// Route::get('/tambahkategori', [KategoriPekerjaanController::class, 'create'])->name('tambahkategori.create');
-Route::get('/tambahkategori', [KategoriPekerjaanController::class, 'create'])->name('tambahkategori.create');
-Route::resource('/tambahkategori/posts', KategoriPekerjaanController::class)->middleware('auth');
-// routes dari Produksi Manufaktur
-Route::get('/job/edit', [JobController::class, 'edit'])->name('job.edit');
-Route::post('/job/update', [JobController::class, 'update'])->name('job.update');
