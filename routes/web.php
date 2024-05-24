@@ -15,6 +15,8 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\TestUjiKemampuanController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RekomendasiPekerjaanController;
+use App\Http\Controllers\KategoriPekerjaanController;
+
 
 
 // Login Admin Routes
