@@ -2,12 +2,12 @@
 @section('content')
 
 <div class="card mb-3 m-lg-6 p-4" style="background-color: #FFFFFF;"> 
-    <form>
+    <form method="post" action="{{ route('tambahkategori.store') }}">
         <h2 class="text-center">Kategori Pekerjaan</h2>
         <div class="row mb-3">
             <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <a href="{{ route('tambahkategori') }}" class="card-link">
+                <a href="{{ route('tambahkategori.create') }}" class="card-link">
                 <button type="button" class="btn btn-primary mt-3" onclick="addFormField()">
                     <i class="fas fa-plus"></i> Tambah Kategori
                 </button>
