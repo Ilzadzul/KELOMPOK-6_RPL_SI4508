@@ -2,19 +2,23 @@
 @section('content')
 
 <div class="card mb-3 m-lg-6 p-4"> 
-    <form method="post">
+    {{-- <form method="post" action="{{route('tambahkategori.store')}}"> --}}
+    <form method="post" action="{{ route('tambahkategori.store') }}">
+
         <div class="card mb-3 m-lg-6 p-8 shadow-none" style="background-color: #F3FAFF;">
             <h2 class="text-center">Tambahkan Kategori Pekerjaan Baru</h2>
             <div class="row mb-3">
-                <label for="inputEmail3" class="col-sm-4 col-form-label">Nama Kategori Pekerjaan</label>
+                <label for="inputJudul" class="col-sm-4 col-form-label">Nama Kategori Pekerjaan</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3">
+                    <input type="text" class="form-control" id="opsional" name="name_kategori">
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="bodyTextarea" class="col-sm-4 col-form-label">Body (Teks)</label>
-                <div class="col-sm-10">
-                    <textarea id="bodyTextarea" name="bodyTextarea"></textarea>
+                {{-- <div class="col-sm-10">
+                    <textarea id="bodyTextarea" name="deskripsi"></textarea> --}}
+                    <input id="body" type="hidden" name="body">
+                    <trix-editor input="body"></trix-editor>
                 </div>
             </div>
             <div class="text-center mt-3" id="button-container">
@@ -25,8 +29,14 @@
     </form>
 </div>
 
-
 <script>
+    document.addEventListener('trix-file-accept', function(e){
+        e.preventDefault();
+    })
+</script>
+
+{{-- ini kodingan buat text editor Tiny Mce tetapi harus berlangganan dulu kalo mau pake fiturnya, mau coba cari yg free dan bisa dipake --}}
+{{-- <script>
     tinymce.init({
       selector: 'textarea',
       plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
@@ -39,5 +49,5 @@
       ],
       ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
     });
-  </script>
+  </script> --}}
 @endsection
