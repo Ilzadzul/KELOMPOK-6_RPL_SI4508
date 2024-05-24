@@ -4,6 +4,7 @@
 <div class="card mb-3 m-lg-6 p-4"> 
     {{-- <form method="post" action="{{route('tambahkategori.store')}}"> --}}
     <form method="post" action="{{ route('tambahkategori.store') }}">
+        @csrf
 
         <div class="card mb-3 m-lg-6 p-8 shadow-none" style="background-color: #F3FAFF;">
             <h2 class="text-center">Tambahkan Kategori Pekerjaan Baru</h2>

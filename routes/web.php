@@ -16,6 +16,9 @@ use App\Http\Controllers\TestUjiKemampuanController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RekomendasiPekerjaanController;
 use App\Http\Controllers\KategoriPekerjaanController;
+use App\Http\Controllers\tambahkategoriController;
+use App\Http\Controllers\JobController;
+
 
 
 
@@ -97,6 +100,7 @@ Route::get('/kategoripekerjaan', [KategoriPekerjaanController::class, 'index'])-
 Route::post('/kategoripekerjaan/store', [KategoriPekerjaanController::class, 'store'])->name('kategoripekerjaan.store');
 Route::delete('/kategoripekerjaan/{id}', [KategoriPekerjaanController::class, 'destroy'])->name('kategoripekerjaan.destroy');
 
+Route::post('/tambahkategori', [KategoriPekerjaanController::class, 'store'])->name('tambahkategori.store') ->middleware('web');
 Route::post('/tambahkategori', [KategoriPekerjaanController::class, 'store'])->name('tambahkategori.store');
 // Route::get('/tambahkategori', [KategoriPekerjaanController::class, 'create'])->name('tambahkategori.create');
 Route::get('/tambahkategori', [KategoriPekerjaanController::class, 'create'])->name('tambahkategori.create');
