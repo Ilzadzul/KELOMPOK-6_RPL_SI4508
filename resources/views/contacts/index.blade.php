@@ -36,7 +36,7 @@
                                         <form action="{{ route('contacts.destroy', $contact) }}" method="POST" style="display:inline;" onsubmit="return confirm('Anda Yakin Untuk Menghapus?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                            <button type="submit" class="btn btn-danger" dusk="delete-contact-{{ $contact->id }}">Hapus</button>
                                         </form>
                                     </td>
                                 @endif

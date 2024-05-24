@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nomor Telepon</label>
-                            <input type="text" class="form-control" name="phone_number" value="{{ $contact->phone_number }}" required>
+                            <input type="text" class="form-control" name="phone_number" pattern="\d*" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="{{ route('contacts.index') }}" class="btn btn-secondary">Kembali</a>
