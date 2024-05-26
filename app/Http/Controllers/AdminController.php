@@ -47,7 +47,7 @@ class AdminController extends Controller
         ]);
 
         // Redirect to the admin settings page or wherever you want
-        return redirect()->route('pengaturanadmin')->with('success', 'Admin updated successfully.');
+        return redirect()->route('pengaturanadmin')->with('success', 'User updated successfully.');
     }
     public function create()
     {
@@ -80,10 +80,9 @@ class AdminController extends Controller
             // print wrong messge
             dd($e->getMessage());
         }
-        Log::info('Pool Created');
 
         // Redirect to the admin settings page or wherever you want
-        return redirect()->route('pengaturanadmin')->with('success', 'Admin added successfully.');
+        return redirect()->route('pengaturanadmin')->with('success', 'Akun berhasil ditambahkan.');
     }
     public function destroy($id)
     {
@@ -94,7 +93,7 @@ class AdminController extends Controller
         $admin->delete();
 
         // Redirect to the admin settings page or wherever you want
-        return redirect()->route('pengaturanadmin')->with('success', 'Admin deleted successfully.');
+        return redirect()->route('pengaturanadmin')->with('success', 'Akun berhasil dihapus');
     }
         public function pengaturanadmin()
     {

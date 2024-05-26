@@ -7,8 +7,8 @@
                 <div class="card-header border-bottom pb-0">
                     <div class="d-sm-flex align-items-center">
                         <div>
-                            <h6 class="font-weight-semibold text-lg mb-0">Members list</h6>
-                            <p class="text-sm">See information about all members</p>
+                            <h6 class="font-weight-semibold text-lg mb-0">Account list</h6>
+                            <p class="text-sm">See information about all account</p>
                         </div>
                         <div class="ms-auto d-flex">
                             <button type="button" class="btn btn-sm btn-white me-2">
@@ -94,7 +94,7 @@
                                         <form action="{{ route('deleteadmin', $user->id) }}" method="POST"  >
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="hapus-button" style="border: none; background-color: transparent;">
+                                            <button type="submit" class="hapus-button" data-delete-id="{{ $user->id }}" style="border: none; background-color: transparent;">
                                                 <!-- Your button content -->
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="margin-right: 10px;">
                                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
