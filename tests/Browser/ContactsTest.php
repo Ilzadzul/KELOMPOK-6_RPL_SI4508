@@ -19,7 +19,7 @@ class ContactsTest extends DuskTestCase
         // Run the dusk seeder
         $this->artisan('db:seed', ['--class' => 'Database\\Seeders\\DuskDatabaseSeeder']);
     }
-    public function testEditContact(): void
+    public function testtc_ktk_06(): void
     {
         // Create a contact to edit
         $contact = Contact::create([
@@ -58,7 +58,7 @@ class ContactsTest extends DuskTestCase
         });
     }
 
-    public function testCreateContact(): void
+    public function testtc_ktk_01(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::find(1)) // Assuming user ID 1 is a Super Admin
@@ -89,7 +89,7 @@ class ContactsTest extends DuskTestCase
     }
 
     
-    public function testCreateContactFail(): void
+    public function testtc_ktk_05(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::find(1)) // Assuming user ID 1 is a Super Admin
@@ -115,7 +115,7 @@ class ContactsTest extends DuskTestCase
         });
     }
     
-    public function testCreateContactFail2(): void
+    public function testtc_ktk_02(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::find(1)) // Assuming user ID 1 is a Super Admin
@@ -141,7 +141,7 @@ class ContactsTest extends DuskTestCase
         });
     }
 
-    public function testCreateContactFail3(): void
+    public function testtc_ktk_03(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::find(1)) // Assuming user ID 1 is a Super Admin
@@ -167,7 +167,7 @@ class ContactsTest extends DuskTestCase
         });
     }
 
-    public function testCreateContactFail4(): void
+    public function testtc_ktk_04(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::find(1)) // Assuming user ID 1 is a Super Admin
@@ -192,7 +192,7 @@ class ContactsTest extends DuskTestCase
             ]);
         });
     }
-    public function testDeleteContact(): void
+    public function testtc_ktk_07(): void
     {
         // Create a contact to delete
         $contact = Contact::create([
@@ -221,7 +221,7 @@ class ContactsTest extends DuskTestCase
             ]);
         });
     }
-    public function testLogout(): void
+    public function testTambahan(): void
         {
             $this->browse(function (Browser $browser) {
                 $browser->loginAs(User::find(1)) // Assuming user ID 1 is a Super Admin
