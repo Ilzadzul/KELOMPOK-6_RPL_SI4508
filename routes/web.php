@@ -15,6 +15,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\TestUjiKemampuanController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RekomendasiPekerjaanController;
+use App\Http\Controllers\JobController;
 
 
 // Login Admin Routes
@@ -36,6 +37,10 @@ Route::get('/dashboard', function () {
 
 Route::get('/wilayah', function () {
     return view('wilayah');
+});
+
+Route::get('/lowongan', function () {
+    return view('lowongan');
 });
 
 Route::get('/pengaturanadmin', [AdminController::class, 'index'])->name('pengaturanadmin')-> middleware('auth', 'superadmin');
@@ -109,3 +114,5 @@ Route::get('/rekomendasi-pekerjaan/{id}/edit', [RekomendasiPekerjaanController::
 Route::put('/rekomendasi-pekerjaan/{id}', [RekomendasiPekerjaanController::class, 'update'])->name('rekomendasipekerjaan.update');
 Route::delete('/rekomendasi-pekerjaan/{id}', [RekomendasiPekerjaanController::class, 'destroy'])->name('rekomendasipekerjaan.destroy');
 
+// Routes for Lowongan Pekerjaan
+Route::resource('jobs', JobController::class);
