@@ -55,7 +55,7 @@ Route::delete('/deleteadmin/{id}', [AdminController::class, 'destroy'])->name('d
 Route::get('/formulirpenduduk', [PendudukController::class, 'create'])->name('formulirpenduduk')-> middleware('auth');;
 Route::post('/formulirpenduduk', [PendudukController::class, 'store'])->name('formulirpenduduk.store')-> middleware('auth');;
 
-
+Route::get('/export-all-data', [PendudukController::class, 'exportAllData'])->name('export.all.data');
 Route::get('/databasependuduk', [PendudukController::class, 'index'])->name('databasependuduk')-> middleware('auth');;
 // Route::get('/tambahdatabase', [DatabaseController::class, 'create'])->name('tambahdatabase');
 // Route::post('/tambahdatabase', [DatabaseController::class, 'store'])->name('tambahdatabase.store');

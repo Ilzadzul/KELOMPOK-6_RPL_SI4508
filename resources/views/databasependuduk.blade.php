@@ -2,6 +2,7 @@
 
 @section('content')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <div class="container-fluid py-4 px-5">
         <div class="row">
             <div class="col-12">
@@ -13,7 +14,7 @@
                                 <p class="text-sm">See information about all penduduk's data</p>
                             </div>
                             <div class="ms-auto d-flex">
-                                <button id="exportToExcel" class="btn btn-primary">Export to Excel</button>
+                                <a href="{{ route('export.all.data') }}" class="btn btn-primary">Export All Data</a>
                             </div>
                             <form action="" method="GET">
                                 <div class="input-group w-sm-100">
@@ -40,7 +41,7 @@
                                     <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Agama</th>
                                     <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Alamat Lengkap</th>
                                     <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Nomor Telepon</th>
-                                    <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Almat Email</th>
+                                    <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Alamat Email</th>
                                     <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">NIK</th>
 
                                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Pendidikan</th>
@@ -180,46 +181,11 @@
                                 </tbody>
                             </table>
                         </div>
-                        <?php
-
-                        use App\Models\Penduduk;
-
-                        // Get the total number of items from the 'users' table
-                        $totalItems = Penduduk::count();
-
-                        // Number of items per page
-                        $itemsPerPage = 5;
-
-                        // Calculate the total number of pages
-                        $totalPages = ceil($totalItems / $itemsPerPage);
-
-                        // Determine the current page number
-                        $currentPage = request()->query('page', 1);
-
-                        // Calculate the offset for the current page
-                        $offset = ($currentPage - 1) * $itemsPerPage;
-
-                        // Fetch items for the current page
-                        $items = Penduduk::skip($offset)->take($itemsPerPage)->get();
-
-                        // Display items for the current page
-                        foreach ($items as $item) {
-                            // echo "Item: $item->id - $item->name<br>";
-                        }
-
-                        // Display pagination controls
-                    ?>
-                    <div class="border-top py-3 px-3 d-flex align-items-center">
-                        <p class="font-weight-semibold mb-0 text-dark text-sm">Page <?php echo $currentPage; ?> of <?php echo $totalPages; ?></p>
-                        <div class="ms-auto">
-                            <?php if ($currentPage > 1) : ?>
-                                <a href="?page=<?php echo $currentPage - 1; ?>" class="btn btn-sm btn-white mb-0">Previous</a>
-                            <?php endif; ?>
-                            <?php if ($currentPage < $totalPages) : ?>
-                                <a href="?page=<?php echo $currentPage + 1; ?>" class="btn btn-sm btn-white mb-0">Next</a>
-                            <?php endif; ?>
+                        <div class="card-footer pt-3 d-flex justify-content-center">
+                            <nav class="pagination pagination-lg pagination-primary">
+                                {{ $kontaks->links('pagination::bootstrap-4') }}
+                            </nav>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -227,31 +193,32 @@
     </div>
     <script>
         $(document).ready(function () {
-            // Function to export data to Excel
-            function exportToExcel() {
-                var data = [
-                    ['Nama Lengkap', 'TTL', 'Jenis Kelamin', 'Agama', 'Alamat', 'Nomor Telepon', 'Email', 'NIK',
-                        'Pendidikan Terakhir', 'Institusi', 'Jurusan', 'Tahun masuk', 'Tahun lulus',
-                        'Pengalaman Kerja', 'Bidang', 'Tahun bekerja', 'Posisi'
-                    ],
-                    @forelse ($kontaks as $kontak)
-                        ['{{ $kontak->namalengkap }}', '{{ $kontak->TTL }}', '{{ $kontak->gender }}', '{{ $kontak->agama }}','{{ $kontak->alamat }}', '{{ $kontak->phonenumber }}', '{{ $kontak->email }}', '{{ $kontak->No_ktp }}',
-                        '{{ $kontak->pendidikan }}', '{{ $kontak->institusi }}', '{{ $kontak->jurusan }}', '{{ $kontak->tahunmasuk }}', '{{ $kontak->tahunlulus }}',
-                        '{{ $kontak->pengalaman }}', '{{ $kontak->bidang }}', '{{ $kontak->tahun }}', '{{ $kontak->posisi }}'
-                        ],
-                    @empty
-                        // No data
-                    @endforelse
-                ];
-
-                var wb = XLSX.utils.book_new();
-                var ws = XLSX.utils.aoa_to_sheet(data);
-                XLSX.utils.book_append_sheet(wb, ws, 'Data');
-                XLSX.writeFile(wb, 'Data.xlsx');
-            }
-
             $('#exportToExcel').click(function () {
-                exportToExcel();
+                // Get the table data
+                var data = [];
+                var headers = [];
+                $('#myTable thead th').each(function () {
+                    headers.push($(this).text().trim());
+                });
+                data.push(headers);
+
+                $('#myTable tbody tr').each(function () {
+                    var row = [];
+                    $(this).find('td').each(function () {
+                        row.push($(this).text().trim());
+                    });
+                    data.push(row);
+                });
+
+                // Convert to worksheet
+                var ws = XLSX.utils.aoa_to_sheet(data);
+
+                // Create a new workbook
+                var wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, "DataPenduduk");
+
+                // Export to Excel
+                XLSX.writeFile(wb, "Data.xlsx");
             });
         });
     </script>

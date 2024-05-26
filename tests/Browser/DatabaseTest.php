@@ -361,29 +361,34 @@ class DatabaseTest extends DuskTestCase
     public function testtc_dbp_11()
 {
     $this->browse(function (Browser $browser) {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::find(1))
+                  ->visit('/dashboard');
+        });
+
         $browser->visit('/databasependuduk')
             // ->assertSee('Data penduduk')
-            ->click('#exportToExcel')  // Assuming #exportToExcel is the ID of the export button
-            ->pause(2000)  // Wait for the download to start (adjust as needed)
+            ->clickLink('Export All Data')  // Click on the link with the text "Export All Data"
+            ->pause(5000)  // Wait for the download to start (adjust as needed)
             ->assertPathIs('/databasependuduk');  // Verify you're still on the same page (adjust as necessary)
         // Define the expected column headers
         $expectedColumnHeaders = [
             'Nama Lengkap',
-            'TTL',
+            'Tempat/Tanggal Lahir',
             'Jenis Kelamin',
             'Agama',
-            'Alamat',
+            'Alamat Lengkap',
             'Nomor Telepon',
-            'Email',
+            'Alamat Email',
             'NIK',
-            'Pendidikan Terakhir',
+            'Pendidikan',
             'Institusi',
             'Jurusan',
             'Tahun masuk',
             'Tahun lulus',
             'Pengalaman Kerja',
             'Bidang',
-            'Tahun bekerja',
+            'Tahun',
             'Posisi',
         ];
 
@@ -402,6 +407,8 @@ class DatabaseTest extends DuskTestCase
                 $actualColumnHeaders[] = $cell->getValue();
             }
         }
+
+        echo "Actual Column Headers: " . implode(", ", $actualColumnHeaders) . "\n";
 
         // Assert that each expected column header exists in the actual headers
         foreach ($expectedColumnHeaders as $expectedHeader) {

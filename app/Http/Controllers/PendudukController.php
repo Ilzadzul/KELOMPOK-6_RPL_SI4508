@@ -6,13 +6,62 @@ use Illuminate\Http\Request;
 use App\Models\Penduduk;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
-
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class PendudukController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function exportAllData()
+    {
+        // Retrieve all data from the database
+        $penduduks = Penduduk::all();
+
+        // Create a new Spreadsheet object
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Define the header row
+        $headerRow = ['Nama Lengkap', 'Tempat/Tanggal Lahir', 'Jenis Kelamin', 'Agama', 'Alamat Lengkap', 'Nomor Telepon', 'Alamat Email', 'NIK',
+            'Pendidikan', 'Institusi', 'Jurusan', 'Tahun masuk', 'Tahun lulus', 'Pengalaman Kerja', 'Bidang', 'Tahun', 'Posisi'];
+        $sheet->fromArray([$headerRow], null, 'A1');
+
+        // Populate the spreadsheet with data
+        $rowData = [];
+        foreach ($penduduks as $penduduk) {
+            $rowData[] = [
+                $penduduk->namalengkap,
+                $penduduk->TTL,
+                $penduduk->gender,
+                $penduduk->agama,
+                $penduduk->alamat,
+                $penduduk->phonenumber,
+                $penduduk->email,
+                $penduduk->No_ktp,
+                $penduduk->pendidikan,
+                $penduduk->institusi,
+                $penduduk->jurusan,
+                $penduduk->tahunmasuk,
+                $penduduk->tahunlulus,
+                $penduduk->pengalaman,
+                $penduduk->bidang,
+                $penduduk->tahun,
+                $penduduk->posisi
+            ];
+        }
+        $sheet->fromArray($rowData, null, 'A2');
+
+        // Create a writer and save the file to the server
+        $writer = new Xlsx($spreadsheet);
+        $fileName = 'Data.xlsx';
+        $temp_file = tempnam(sys_get_temp_dir(), $fileName);
+        $writer->save($temp_file);
+
+        // Return the Excel file as a response for download
+        return response()->download($temp_file, $fileName)->deleteFileAfterSend(true);
+    }
     public function index(Request $request)
     {
         //
