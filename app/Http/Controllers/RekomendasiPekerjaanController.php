@@ -6,15 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\RekomendasiPekerjaan;
 
 class RekomendasiPekerjaanController extends Controller
-{
-    public function index(Request $request)
-    {
-        $keyword = $request->keyword;
-        $pekerjaans = RekomendasiPekerjaan::where('nama_pekerjaan', 'LIKE', '%'.$keyword.'%')
-            ->orWhere('lokasi_pekerjaan', 'LIKE', '%'.$keyword.'%')
-            ->paginate(5);
 
-        return view('rekomendasipekerjaan.index', ['pekerjaans' => $pekerjaans, 'keyword' => $keyword]);
+{
+    public function index()
+    {
+        $rekomendasipekerjaan = RekomendasiPekerjaan::all();
+        return view('rekomendasipekerjaan.index', compact('rekomendasipekerjaan'));
     }
 
     public function create()
@@ -25,72 +22,51 @@ class RekomendasiPekerjaanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_penduduk' => 'required',
-            'hasil_test_uji' => 'required',
-            'nama_pekerjaan' => 'required',
-            'lokasi_pekerjaan' => 'required',
-            'deskripsi_pekerjaan' => 'nullable',
+            'nama_penduduk' => 'required|string|max:255',
+            'hasil_test_uji' => 'required|string|max:255',
+            'nama_pekerjaan' => 'required|string|max:255',
+            'lokasi_pekerjaan' => 'required|string|max:255',
+            'deskripsi_pekerjaan' => 'required|string',
         ]);
 
-        try {
-            RekomendasiPekerjaan::create([
-                'nama_penduduk' => $request->input('nama_penduduk'),
-                'hasil_test_uji' => $request->input('hasil_test_uji'),
-                'nama_pekerjaan' => $request->input('nama_pekerjaan'),
-                'lokasi_pekerjaan' => $request->input('lokasi_pekerjaan'),
-                'deskripsi_pekerjaan' => $request->input('deskripsi_pekerjaan'),
-            ]);
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-        }
+        RekomendasiPekerjaan::create($request->all());
 
-        return redirect()->route('rekomendasipekerjaan.index')
-            ->with('success', 'Rekomendasi pekerjaan berhasil ditambahkan.');
+        return redirect()->route('rekomendasipekerjaan.index')->with('success', 'Data rekomendasi pekerjaan berhasil disimpan.');
+    }
+
+    public function show($id)
+    {
+        $rekomendasiPekerjaan = RekomendasiPekerjaan::findOrFail($id);
+        return view('rekomendasipekerjaan.show', compact('rekomendasiPekerjaan'));
     }
 
     public function edit($id)
     {
-        $pekerjaan = RekomendasiPekerjaan::findOrFail($id);
-        return view('rekomendasipekerjaan.edit', compact('pekerjaan'));
+        $rekomendasiPekerjaan = RekomendasiPekerjaan::findOrFail($id);
+        return view('rekomendasipekerjaan.edit', compact('rekomendasiPekerjaan'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_penduduk' => 'required',
-            'hasil_test_uji' => 'required',
-            'nama_pekerjaan' => 'required',
-            'lokasi_pekerjaan' => 'required',
-            'deskripsi_pekerjaan' => 'nullable',
+            'nama_penduduk' => 'required|string|max:255',
+            'hasil_test_uji' => 'required|string|max:255',
+            'nama_pekerjaan' => 'required|string|max:255',
+            'lokasi_pekerjaan' => 'required|string|max:255',
+            'deskripsi_pekerjaan' => 'required|string',
         ]);
 
-        try {
-            $pekerjaan = RekomendasiPekerjaan::findOrFail($id);
-            $pekerjaan->update([
-                'nama_penduduk' => $request->input('nama_penduduk'),
-                'hasil_test_uji' => $request->input('hasil_test_uji'),
-                'nama_pekerjaan' => $request->input('nama_pekerjaan'),
-                'lokasi_pekerjaan' => $request->input('lokasi_pekerjaan'),
-                'deskripsi_pekerjaan' => $request->input('deskripsi_pekerjaan'),
-            ]);
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-        }
+        $rekomendasiPekerjaan = RekomendasiPekerjaan::findOrFail($id);
+        $rekomendasiPekerjaan->update($request->all());
 
-        return redirect()->route('rekomendasipekerjaan.index')
-            ->with('success', 'Rekomendasi pekerjaan berhasil diperbarui.');
+        return redirect()->route('rekomendasipekerjaan.index')->with('success', 'Data rekomendasi pekerjaan berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
-        try {
-            $pekerjaan = RekomendasiPekerjaan::findOrFail($id);
-            $pekerjaan->delete();
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-        }
+        $rekomendasiPekerjaan = RekomendasiPekerjaan::findOrFail($id);
+        $rekomendasiPekerjaan->delete();
 
-        return redirect()->route('rekomendasipekerjaan.index')
-            ->with('success', 'Rekomendasi pekerjaan berhasil dihapus.');
+        return redirect()->route('rekomendasipekerjaan.index')->with('success', 'Data rekomendasi pekerjaan berhasil dihapus.');
     }
 }
