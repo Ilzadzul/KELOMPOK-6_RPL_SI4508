@@ -18,7 +18,7 @@ class CreateTestUjiKemampuanTable extends Migration
             $table->string('nama_test');
             $table->date('tanggal_pelaksanaan');
             $table->string('tempat_pelaksanaan');
-            $table->text('anggota_test')->nullable();
+            $table->text('anggota_test');
             $table->timestamps();
         });
     }
