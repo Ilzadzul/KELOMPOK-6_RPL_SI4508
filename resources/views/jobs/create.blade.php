@@ -1,7 +1,7 @@
 @extends('layouts.kalogakbisa')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <h2>Add New Job</h2>
 
     @if ($errors->any())
@@ -39,6 +39,13 @@
         <div class="form-group">
             <label for="contact">Contact:</label>
             <input type="text" class="form-control" id="contact" name="contact" required>
+        </div>
+        <div class="form-group">
+            <label for="status">Job Status:</label>
+            <select class="form-control" id="status" name="status" required>
+                <option value="open">Open</option>
+                <option value="closed">Closed</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

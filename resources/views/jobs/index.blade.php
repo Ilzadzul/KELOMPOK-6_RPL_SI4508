@@ -74,6 +74,7 @@
                 <th>End Date</th>
                 <th>Location</th>
                 <th>Contact</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -86,13 +87,18 @@
                 <td>{{ $job->end_date }}</td>
                 <td>{{ $job->location }}</td>
                 <td>{{ $job->contact }}</td>
+                <td>{{ $job->status }}</td>
                 <td>
-                    <a href="{{ route('jobs.edit', $job->id) }}" class="btn-edit">Edit</a>
-                    <form action="{{ route('jobs.destroy', $job->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn-delete">Delete</button>
-                    </form>
+                    @if(auth()->user()->user_type === 'Super Admin')
+                        <a href="{{ route('jobs.edit', $job->id) }}" class="btn-edit">Edit</a>
+                        <form action="{{ route('jobs.destroy', $job->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn-delete">Delete</button>
+                        </form>
+                    @else
+                        <span>View Only</span>
+                    @endif
                 </td>
             </tr>
             @endforeach

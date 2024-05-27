@@ -41,6 +41,13 @@
             <label for="contact">Contact:</label>
             <input type="text" class="form-control" id="contact" name="contact" value="{{ $job->contact }}" required>
         </div>
+        <div class="form-group">
+            <label for="status">Job Status:</label>
+            <select class="form-control" id="status" name="status" required>
+                <option value="open" {{ $job->status == 'open' ? 'selected' : '' }}>Open</option>
+                <option value="closed" {{ $job->status == 'closed' ? 'selected' : '' }}>Closed</option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
