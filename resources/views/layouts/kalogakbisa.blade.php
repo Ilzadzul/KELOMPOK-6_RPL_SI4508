@@ -4,12 +4,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <script src="https://cdn.tiny.cloud/1/ezor9xuvul92imvy9jvy3uc5nhxipykdtn3adijq5eojsw3q/tinymce/5/tinymce.min.js"></script>
+  {{-- <script src="https://cdn.tiny.cloud/1/ezor9xuvul92imvy9jvy3uc5nhxipykdtn3adijq5eojsw3q/tinymce/5/tinymce.min.js"></script>
   <script>
     tinymce.init({
       selector: '#mytextarea'
     });
-  </script>
+  </script> --}}
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+    <style>
+      trix-toolbar [data-trix-button-group="file-tools"] {
+          display: none;
+      }
+    </style>
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <title>

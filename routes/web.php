@@ -16,7 +16,8 @@ use App\Http\Controllers\TestUjiKemampuanController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RekomendasiPekerjaanController;
 use App\Http\Controllers\JobController;
-
+use App\Http\Controllers\KategoriPekerjaanController;
+use App\Http\Controllers\tambahkategoriController;
 
 // Login Admin Routes
 Route::get('/', function () {
@@ -88,13 +89,25 @@ Route::get('/kategoripekerjaan', function () {
     return view('kategoripekerjaan');
 });
 
-Route::get('/produksi-manufaktur', function () {
-    return view('produksi-manufaktur');
-})->name('produksi-manufaktur');
+Route::get('/produksi-manufaktur{id}', [KategoriPekerjaanController::class, 'show'] )->name('produksi-manufaktur');
 
 Route::get('/tambahkategori', function () {
     return view('tambahkategori');
 })->name('tambahkategori');
+
+Route::get('/kategoripekerjaan', [KategoriPekerjaanController::class, 'index'])->name('kategoripekerjaan');
+Route::post('/kategoripekerjaan/store', [KategoriPekerjaanController::class, 'store'])->name('kategoripekerjaan.store');
+Route::delete('/kategoripekerjaan/{id}', [KategoriPekerjaanController::class, 'destroy'])->name('kategoripekerjaan.destroy');
+Route::put('/update-kategori/{id}', [KategoriPekerjaanController::class, 'updateDeskripsi'])->name('update-kategori');
+
+// Route::post('/tambahkategori', [KategoriPekerjaanController::class, 'store'])->name('tambahkategori.store') ->middleware('web');
+Route::post('/tambah', [tambahkategoriController::class, 'store']);
+// Route::get('/tambahkategori', [KategoriPekerjaanController::class, 'create'])->name('tambahkategori.create');
+Route::get('/tambahkategori', [KategoriPekerjaanController::class, 'create'])->name('tambahkategori.create');
+Route::resource('/tambahkategori/posts', KategoriPekerjaanController::class)->middleware('auth');
+// routes dari Produksi Manufaktur
+Route::get('/updatekategori/edit', [UpdateKategori::class, 'edit'])->name('updatekategori.edit');
+Route::post('/updatekategori/update', [UpdateKategori::class, 'update'])->name('updatekategori.update');
 
 Route::resource('contacts', ContactController::class);
 
