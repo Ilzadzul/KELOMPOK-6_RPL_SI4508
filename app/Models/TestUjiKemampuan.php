@@ -15,6 +15,6 @@ class TestUjiKemampuan extends Model
         'nama_test',
         'tanggal_pelaksanaan',
         'tempat_pelaksanaan',
-        'daftar_anggota_test',
+        'anggota_test',
     ];
 }
