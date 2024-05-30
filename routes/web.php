@@ -18,6 +18,7 @@ use App\Http\Controllers\RekomendasiPekerjaanController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\KategoriPekerjaanController;
 use App\Http\Controllers\tambahkategoriController;
+use App\Http\Controllers\JobLocationController;
 
 // Login Admin Routes
 Route::get('/', function () {
@@ -120,3 +121,6 @@ Route::resource('rekomendasipekerjaan', RekomendasiPekerjaanController::class);
 
 // Routes for Lowongan Pekerjaan
 Route::resource('jobs', JobController::class);
+
+Route::resource('jobLocations', JobLocationController::class);
+
