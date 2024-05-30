@@ -13,9 +13,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Location</th>
-                <th>Sub District</th>
-                <th>Setpoint</th>
+                <th>Kecamatan</th>
+                <th>Kelurahan</th>
+                <th>Link Map</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -63,4 +63,41 @@
     </table>
     @endif
 </div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col text-center">
+            <a href="{{ url('/dashboard') }}" class="btn btn-primary">Kembali</a>
+        </div>
+    </div>
+</div>
+
 @endsection
+
+<style>
+.table {
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #dee2e6; /* Warna border bisa disesuaikan */
+    padding: 8px; /* Atur padding sesuai kebutuhan */
+}
+
+.table thead th {
+    background-color: #f8f9fa; /* Warna background header tabel */
+    border-bottom: 2px solid #dee2e6; /* Border bawah yang lebih tebal untuk header */
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Warna selang-seling untuk baris tabel */
+}
+
+/* Tambahkan responsivitas untuk tampilan mobile */
+@media (max-width: 768px) {
+    .table-responsive {
+        border: 0;
+    }
+}
+</style>
