@@ -20,4 +20,12 @@
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col text-center">
+            <a href="{{ url('/jobLocations') }}" class="btn btn-primary">Kembali</a>
+        </div>
+    </div>
+</div>
 @endsection
