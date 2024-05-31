@@ -109,8 +109,8 @@ Route::post('/tambah', [tambahkategoriController::class, 'store']);
 Route::get('/tambahkategori', [KategoriPekerjaanController::class, 'create'])->name('tambahkategori.create');
 Route::resource('/tambahkategori/posts', KategoriPekerjaanController::class)->middleware('auth');
 // routes dari Produksi Manufaktur
-Route::get('/updatekategori/edit', [UpdateKategori::class, 'edit'])->name('updatekategori.edit');
-Route::post('/updatekategori/update', [UpdateKategori::class, 'update'])->name('updatekategori.update');
+Route::get('/updatekategori/edit', [UpdateKategoriController::class, 'edit'])->name('updatekategori.edit');
+Route::post('/updatekategori/update', [UpdateKategoriController::class, 'update'])->name('updatekategori.update');
 
 Route::resource('contacts', ContactController::class);
 
