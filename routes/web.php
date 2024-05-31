@@ -19,6 +19,8 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\KategoriPekerjaanController;
 use App\Http\Controllers\tambahkategoriController;
 use App\Http\Controllers\JobLocationController;
+use App\Http\Controllers\UpdateKategoriController;
+use App\Http\Controllers\KelurahanController;
 
 // Login Admin Routes
 Route::get('/', function () {
@@ -57,14 +59,14 @@ Route::delete('/deleteadmin/{id}', [AdminController::class, 'destroy'])->name('d
 Route::get('/formulirpenduduk', [PendudukController::class, 'create'])->name('formulirpenduduk')-> middleware('auth');;
 Route::post('/formulirpenduduk', [PendudukController::class, 'store'])->name('formulirpenduduk.store')-> middleware('auth');;
 
-Route::get('/export-all-data', [PendudukController::class, 'exportAllData'])->name('export.all.data');
+Route::get('/export-all-data', [PendudukController::class, 'exportAllData'])->name('export.all.data')-> middleware('auth');;
 Route::get('/databasependuduk', [PendudukController::class, 'index'])->name('databasependuduk')-> middleware('auth');;
 // Route::get('/tambahdatabase', [DatabaseController::class, 'create'])->name('tambahdatabase');
 // Route::post('/tambahdatabase', [DatabaseController::class, 'store'])->name('tambahdatabase.store');
 
-Route::get('/editformulirpenduduk/{id}', [PendudukController::class, 'edit'])->name('editpenduduk');
-Route::put('/updatependuduk/{id}', [PendudukController::class, 'update'])->name('updatependuduk');
-Route::get('/deletependuduk/{id}', [PendudukController::class, 'destroy'])->name('deletependuduk');
+Route::get('/editformulirpenduduk/{id}', [PendudukController::class, 'edit'])->name('editpenduduk')-> middleware('auth');;
+Route::put('/updatependuduk/{id}', [PendudukController::class, 'update'])->name('updatependuduk')-> middleware('auth');;
+Route::get('/deletependuduk/{id}', [PendudukController::class, 'destroy'])->name('deletependuduk')-> middleware('auth');;
 
 Route::get('/feedback', [ReviewRatingController::class, 'showRatings'])->name('feedback');
 
@@ -124,3 +126,10 @@ Route::resource('jobs', JobController::class);
 
 Route::resource('jobLocations', JobLocationController::class);
 
+Route::get('/wilayah', [KelurahanController::class, 'index'])->name('kelurahan.index');
+Route::get('/tambahkelurahan', [KelurahanController::class, 'create'])->name('kelurahan.create')->middleware('auth', 'superadmin');
+Route::post('/store', [KelurahanController::class, 'store'])->name('kelurahan.store')->middleware('auth', 'superadmin');
+//crud
+Route::get('/editkelurahan/{id}', [KelurahanController::class, 'edit'])->name('editkelurahan')->middleware('auth');
+Route::put('/updatekelurahan/{id}', [KelurahanController::class, 'update'])->name('updatekelurahan')->middleware('auth');
+Route::delete('/deletekelurahan/{id}', [KelurahanController::class, 'destroy'])->name('deletekelurahan')->middleware('auth', 'superadmin');
