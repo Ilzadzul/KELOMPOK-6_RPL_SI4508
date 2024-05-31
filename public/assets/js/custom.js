@@ -13,23 +13,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-function filterRows(gender) {
-    const table = document.getElementById('genderTable');
-    const rows = table.getElementsByTagName('tr');
+// function filterRows(gender) {
+//     const table = document.getElementById('genderTable');
+//     const rows = table.getElementsByTagName('tr');
 
-    for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
-        const cells = rows[i].getElementsByTagName('td');
-        if (cells.length > 0) {
-            const genderCell = cells[1].textContent.toLowerCase();
-            if (gender === 'all') {
-                rows[i].style.display = '';
-            } else if (genderCell === gender) {
-                rows[i].style.display = '';
-            } else {
-                rows[i].style.display = 'none';
-            }
+//     for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
+//         const cells = rows[i].getElementsByTagName('td');
+//         if (cells.length > 0) {
+//             const genderCell = cells[1].textContent.toLowerCase();
+//             if (gender === 'all') {
+//                 rows[i].style.display = '';
+//             } else if (genderCell === gender) {
+//                 rows[i].style.display = '';
+//             } else {
+//                 rows[i].style.display = 'none';
+//             }
+//         }
+//     }
+// }
+function filterRows(gender) {
+    var rows = document.querySelectorAll('.data-row');
+
+    rows.forEach(function(row) {
+        if (gender === 'all' || row.dataset.gender === gender) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
         }
-    }
+    });
 }
 
 function sortTable(order) {
