@@ -76,6 +76,22 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <label for="nama_kelurahan" class="col-sm-2 col-form-label">Kelurahan</label>
+                        <div class="col-sm-12">
+                            <select class="form-control @error('nama_kelurahan') is-invalid @enderror" name="nama_kelurahan">
+                                <option disabled>Select kelurahan</option>
+                                @foreach($kelurahans as $kelurahan)
+                                    <option value="{{ $kelurahan }}" {{ old('nama_kelurahan') == $kelurahan ? 'selected' : '' }}>{{ $kelurahan }}</option>
+                                @endforeach
+                            </select>
+                            @error('nama_kelurahan')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label for="phonenumber" class="col-sm-2 col-form-label">Nomor Telepon</label>
                         <div class="col-sm-12">
                             <input type="number" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" id="phonenumber" placeholder="012345678910" value="{{ old('phonenumber') }}">

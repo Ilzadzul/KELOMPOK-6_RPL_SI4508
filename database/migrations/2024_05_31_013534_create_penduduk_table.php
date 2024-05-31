@@ -20,11 +20,10 @@ class CreatePendudukTable extends Migration
             $table->enum('gender', ['Pria', 'Wanita']);
             $table->enum('agama', ['Islam', 'Kristen','Katolik','Hindu', 'Buddha', 'Khonghucu']);
             $table->string('alamat');
+            $table->string('nama_kelurahan');
             $table->bigInteger('phonenumber')->nullable();
             $table->string('email', 128)->nullable();
             $table->bigInteger('No_ktp')->nullable();
-
-
 
             //DUA
             $table->enum('pendidikan', ['Tidak ada', 'SD atau setara','SMP atau setara','SMA atau setara', 'D3 atau setara', 'Pendidikan tinggi atau setara']);

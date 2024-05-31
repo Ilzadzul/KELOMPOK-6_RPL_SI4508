@@ -40,6 +40,7 @@
                                     <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Jenis Kelamin</th>
                                     <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Agama</th>
                                     <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Alamat Lengkap</th>
+                                    <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Kelurahan</th>
                                     <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Nomor Telepon</th>
                                     <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Alamat Email</th>
                                     <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">NIK</th>
@@ -125,6 +126,9 @@
                                         </td>
                                         <td>
                                             <p class="text-sm text-dark font-weight-semibold mb-0">{{ $kontak->alamat}}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm text-dark font-weight-semibold mb-0">{{ $kontak->kelurahan->name ?? 'Kelurahan not found' }}</p>
                                         </td>
                                         <td>
                                             <p class="text-sm text-dark font-weight-semibold mb-0">{{ $kontak->phonenumber}}</p>

@@ -17,10 +17,11 @@ class Penduduk extends Model
         'gender', // Sesuaikan dengan nama kolom di tabel database
         'agama',
         'alamat',
+        'nama_kelurahan',
         'phonenumber',
         'email',
         'No_ktp',
-        
+
         'pendidikan',
         'institusi',
         'jurusan',
@@ -33,5 +34,9 @@ class Penduduk extends Model
         'posisi',
 
     ];
+    public function kelurahan()
+    {
+        return $this->belongsTo(Kelurahans::class, 'nama_kelurahan', 'name');
+    }
 
 }

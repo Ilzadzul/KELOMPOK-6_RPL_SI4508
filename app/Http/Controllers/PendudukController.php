@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelurahans;
 use Illuminate\Http\Request;
 use App\Models\Penduduk;
 use Illuminate\Support\Facades\Log;
@@ -24,7 +25,7 @@ class PendudukController extends Controller
         $sheet = $spreadsheet->getActiveSheet();
 
         // Define the header row
-        $headerRow = ['Nama Lengkap', 'Tempat/Tanggal Lahir', 'Jenis Kelamin', 'Agama', 'Alamat Lengkap', 'Nomor Telepon', 'Alamat Email', 'NIK',
+        $headerRow = ['Nama Lengkap', 'Tempat/Tanggal Lahir', 'Jenis Kelamin', 'Agama', 'Alamat Lengkap', 'Kelurahan', 'Nomor Telepon', 'Alamat Email', 'NIK',
             'Pendidikan', 'Institusi', 'Jurusan', 'Tahun masuk', 'Tahun lulus', 'Pengalaman Kerja', 'Bidang', 'Tahun', 'Posisi'];
         $sheet->fromArray([$headerRow], null, 'A1');
 
@@ -37,6 +38,7 @@ class PendudukController extends Controller
                 $penduduk->gender,
                 $penduduk->agama,
                 $penduduk->alamat,
+                $penduduk->nama_kelurahan,
                 $penduduk->phonenumber,
                 $penduduk->email,
                 $penduduk->No_ktp,
@@ -73,6 +75,7 @@ class PendudukController extends Controller
         ->orWhere('gender', 'LIKE', '%'.$keyword.'%')
         ->orWhere('agama', 'LIKE', '%'.$keyword.'%')
         ->orWhere('alamat', 'LIKE', '%'.$keyword.'%')
+        ->orWhere('nama_kelurahan', 'LIKE', '%'.$keyword.'%')
         ->orWhere('phonenumber', 'LIKE', '%'.$keyword.'%')
         ->orWhere('email', 'LIKE', '%'.$keyword.'%')
         ->orWhere('No_ktp', 'LIKE', '%'.$keyword.'%')
@@ -100,7 +103,8 @@ class PendudukController extends Controller
      */
     public function create()
     {
-        return view('formulirpenduduk');
+        $kelurahans = Kelurahans::pluck('name','name');
+        return view('formulirpenduduk', compact('kelurahans'));
     }
 
     /**
@@ -115,6 +119,7 @@ class PendudukController extends Controller
             'gender' => ['required', Rule::in(['Pria', 'Wanita'])],
             'agama' => ['required', Rule::in(['Islam', 'Kristen', 'Katolik','Hindu','Buddha', 'Khonghucu'])],
             'alamat' => 'required',
+            'nama_kelurahan' => 'required|string',
             'phonenumber' => 'required|numeric|regex:/^\d{10,13}$/',
             'email' => 'nullable|email',
             'No_ktp'=> 'required|numeric|digits:16',
@@ -138,6 +143,7 @@ class PendudukController extends Controller
             'gender' => $request->input('gender'),
             'agama' => $request->input('agama'),
             'alamat' => $request->input('alamat'),
+            'nama_kelurahan' => $request->input('nama_kelurahan'),
             'phonenumber' => $request->input('phonenumber'),
             'email' => $request->input('email'),
             'No_ktp' =>$request->input('No_ktp'),
@@ -174,8 +180,9 @@ class PendudukController extends Controller
     public function edit($id)
     {
         $kontak = Penduduk::find($id);
+        $kelurahans = Kelurahans::pluck('name','name');
 
-        return view('editformulirpenduduk', compact('kontak'));
+        return view('editformulirpenduduk', compact('kontak','kelurahans'));
 
     }
 
@@ -190,6 +197,7 @@ class PendudukController extends Controller
             'gender' => ['required', Rule::in(['Pria', 'Wanita'])],
             'agama' => ['required', Rule::in(['Islam', 'Kristen', 'Katolik','Hindu','Buddha', 'Khonghucu'])],
             'alamat' => 'required',
+            'nama_kelurahan' => 'required|string',
             'phonenumber' => 'required|numeric|regex:/^\d{10,13}$/',
             'email' => 'nullable|email',
             'No_ktp'=> 'required|numeric|digits:16',
@@ -212,6 +220,7 @@ class PendudukController extends Controller
             'gender' => $request->input('gender'),
             'agama' => $request->input('agama'),
             'alamat' => $request->input('alamat'),
+            'nama_kelurahan' => $request->input('nama_kelurahan'),
             'phonenumber' => $request->input('phonenumber'),
             'email' => $request->input('email'),
             'No_ktp' =>$request->input('No_ktp'),
