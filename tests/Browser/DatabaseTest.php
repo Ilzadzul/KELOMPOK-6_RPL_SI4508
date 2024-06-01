@@ -86,6 +86,7 @@ class DatabaseTest extends DuskTestCase
                 ->select('gender', '')
                 ->select('agama', '')
                 ->type('alamat','')
+                ->select('nama_kelurahan', '')
                 ->type('phonenumber','')
                 ->type('email','')
                 ->type('No_ktp','')
@@ -255,6 +256,7 @@ class DatabaseTest extends DuskTestCase
                 ->select('gender', '')
                 ->select('agama', '')
                 ->type('alamat','')
+                ->select('nama_kelurahan', '')
                 ->type('phonenumber','')
                 ->type('email','')
                 ->type('No_ktp','')
@@ -378,6 +380,7 @@ class DatabaseTest extends DuskTestCase
             'Jenis Kelamin',
             'Agama',
             'Alamat Lengkap',
+            'Kelurahan',
             'Nomor Telepon',
             'Alamat Email',
             'NIK',
