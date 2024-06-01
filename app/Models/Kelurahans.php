@@ -20,4 +20,12 @@ class Kelurahans extends Model
     {
         return $this->hasMany(Penduduk::class, 'nama_kelurahan', 'id');
     }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($kelurahan) {
+            $kelurahan->penduduk()->delete();
+        });
+    }
 }

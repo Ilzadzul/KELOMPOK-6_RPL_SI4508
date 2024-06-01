@@ -79,7 +79,7 @@
                                         <form action="{{ route('reset-password', $user) }}" method="POST">
                                             @csrf
                                             @method('POST')
-                                            <button type="submit" class="btn-transparent rounded-pill text-sm text-light font-weight-semibold mb-0" style="background-color:cadetblue; border-color: rgba(0, 128, 0, 0);">Reset Password</button>
+                                            <button type="submit" dusk="reset-password-{{ $user->username }}" class="btn-transparent rounded-pill text-sm text-light font-weight-semibold mb-0" style="background-color:cadetblue; border-color: rgba(0, 128, 0, 0);">Reset Password</button>
                                         </form>
                                     </td>
                                     <td class="align-middle" style="text-align: left;">
