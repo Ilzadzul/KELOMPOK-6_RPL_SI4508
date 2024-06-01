@@ -252,4 +252,61 @@ class AccountTest extends DuskTestCase
             ->assertSee('Invalid');
         });
     }
+
+    public function testtc_acc_07():void
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/login')
+                    ->type('username','salmaatest')
+                    ->type('password','password123')
+                    ->press('Log in');
+
+            $browser->assertPathIs('/dashboard');
+            $browser->visit('/logout');
+        });
+
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/login')
+                    ->type('username','salmatest')
+                    ->type('password','123456')
+                    ->press('Log in');
+
+            $browser->assertPathIs('/dashboard');
+            $browser->visit('/pengaturanadmin')
+                    ->with('table', function ($table) {
+                        $table->assertSee('salmaatest')
+                            ->click('@reset-password-salmaatest');
+            });
+            $browser->assertSee('Password reset successfully to 123456')
+                    ->visit('/logout');
+        });
+
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/login')
+                    ->type('username','salmaatest')
+                    ->type('password','password123')
+                    ->press('Log in');
+
+            $browser->assertSee('Invalid')
+                    ->assertPathIsNot('/dashboard');
+
+            $browser->type('username','salmaatest')
+                    ->type('password','123456')
+                    ->press('Log in')
+                    ->assertPathIs('/dashboard');
+        });
+
+        //login page manual pake akun super admin
+        //visit pengaturanadmin
+        //assert see salmaatest
+        //click reset password
+        //assert see pop-up
+        //logout
+
+        //login salmaatest password password123
+        //see invalid
+
+        //login salmaatest password 123456
+        //assertpath is /dashboard
+    }
 }
