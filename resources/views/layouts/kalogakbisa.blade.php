@@ -179,17 +179,39 @@
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                         <div class="input-group">
-                            <form action="{{route('kelurahan.index')}}" method="GET">
-                                <div class="input-group w-sm-100">
-                                    <span class="input-group-text text-body">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            {{-- Fitur Search --}}
+                            <form action="{{ route('kelurahan.index') }}" method="GET">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text text-body p-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
                                         </svg>
                                     </span>
                                     <input type="text" name="keyword" class="form-control" placeholder="Search">
-                                    <button type="submit">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
+                            
+                            <style>
+                                .input-group .form-control,
+                                .input-group .btn,
+                                .input-group-text {
+                                    height: calc(1.5em + 0.75rem + 2px); /* Adjusted for a smaller height */
+                                    display: flex;
+                                    align-items: center;
+                                }
+                                .input-group-text svg {
+                                    width: 1rem;
+                                    height: 1rem;
+                                }
+                                .btn-primary {
+                                    color: #fff; /* Ensure text color is white */
+                                }
+                                .btn-primary:disabled {
+                                    color: #fff; /* Keep text color white when button is disabled */
+                                }
+                            </style>
+                            {{-- Batas Fitur Search --}}
                         </div>
                     </div>
                     <ul class="navbar-nav  justify-content-end">
