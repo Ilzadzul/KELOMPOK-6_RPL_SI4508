@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Penduduk;
+use App\Models\Kelurahans;
 use Illuminate\Support\Facades\Hash;
 
 class DuskDatabaseSeeder extends Seeder
@@ -26,12 +27,18 @@ class DuskDatabaseSeeder extends Seeder
             'password' => Hash::make('password123'),
         ]);
 
+        Kelurahans::create([
+            'name' => 'Kelurahan A',
+            'deskripsi' => 'Kelurahan A merupakan kelurahan yang berada di A.',
+        ]);
+
         Penduduk::create([
             'namalengkap' => 'nama lengkap test',
             'TTL' => 'TTL test',
             'gender' => 'Wanita',
             'agama' => 'Islam',
             'alamat' => 'Alamat test',
+            'nama_kelurahan' => 'Kelurahan A',
             'phonenumber' => '081315170575',
             'email' => 'test@gmail.com',
             'No_ktp' => '1234567890123450',
@@ -54,6 +61,7 @@ class DuskDatabaseSeeder extends Seeder
             'gender' => 'Wanita',
             'agama' => 'Islam',
             'alamat' => 'Alamat search',
+            'nama_kelurahan' => 'Kelurahan A',
             'phonenumber' => '081315170579',
             'email' => 'search@gmail.com',
             'No_ktp' => '1234567890123470',
