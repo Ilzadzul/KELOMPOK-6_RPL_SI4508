@@ -147,3 +147,19 @@
     <script src="/assets/js/custom.js"></script>
     </body>
 @endsection
+@section('scripts')
+    <!-- Include SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- Script untuk menampilkan SweetAlert setelah berhasil menambahkan admin -->
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
+@endsection

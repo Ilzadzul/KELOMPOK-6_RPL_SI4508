@@ -32,6 +32,11 @@ class DuskDatabaseSeeder extends Seeder
             'deskripsi' => 'Kelurahan A merupakan kelurahan yang berada di A.',
         ]);
 
+        Kelurahans::create([
+            'name' => 'Kelurahan B',
+            'deskripsi' => 'Kelurahan B merupakan kelurahan yang berada di mana weh.',
+        ]);
+
         Penduduk::create([
             'namalengkap' => 'nama lengkap test',
             'TTL' => 'TTL test',
@@ -62,6 +67,29 @@ class DuskDatabaseSeeder extends Seeder
             'agama' => 'Islam',
             'alamat' => 'Alamat search',
             'nama_kelurahan' => 'Kelurahan A',
+            'phonenumber' => '081315170579',
+            'email' => 'search@gmail.com',
+            'No_ktp' => '1234567890123470',
+
+            'pendidikan' => 'Tidak ada',
+            'institusi' => '',
+            'jurusan'=> '',
+            'tahunmasuk' => '',
+            'tahunlulus'=> '',
+
+            'pengalaman'=> '',
+            'bidang'=> '',
+            'tahun'=> '',
+            'posisi' => '',
+        ]);
+
+        Penduduk::create([
+            'namalengkap' => 'nama lengkap search',
+            'TTL' => 'TTL search',
+            'gender' => 'Wanita',
+            'agama' => 'Islam',
+            'alamat' => 'Alamat search',
+            'nama_kelurahan' => 'Kelurahan B',
             'phonenumber' => '081315170579',
             'email' => 'search@gmail.com',
             'No_ktp' => '1234567890123470',

@@ -57,6 +57,7 @@ class KelurahanController extends Controller
         ]);
 
         $kelurahan = Kelurahans::findOrFail($id);
+        $oldName = $kelurahan->name; // Store the old name
 
         // Update data in the database
         $kelurahan->update([
@@ -64,7 +65,12 @@ class KelurahanController extends Controller
             'deskripsi' => $request->input('deskripsi'),
         ]);
 
-        return redirect()->route('kelurahan.index')
+        Penduduk::where('nama_kelurahan', $oldName)
+        ->update(['nama_kelurahan' => $request->input('name')]);
+
+        $kelurahans = Kelurahans::all();
+        $pendudukGroupedByKelurahan = Penduduk::all()->groupBy('nama_kelurahan');
+        return redirect()->route('kelurahan.index', compact('kelurahans', 'pendudukGroupedByKelurahan'))
             ->with('success', 'Kelurahan berhasil diperbarui');
     }
 

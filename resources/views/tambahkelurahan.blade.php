@@ -46,7 +46,7 @@
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <a href="{{ route('kelurahan.index') }}" class="btn btn-secondary">Back to List</a>
+                                    <a href="{{ route('kelurahan.index') }}" class="btn btn-secondary">Cancel</a>
                                 </div>
                             </form>
                         </div>
@@ -56,4 +56,20 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+    <!-- Include SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- Script untuk menampilkan SweetAlert setelah berhasil menambahkan admin -->
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
 @endsection
