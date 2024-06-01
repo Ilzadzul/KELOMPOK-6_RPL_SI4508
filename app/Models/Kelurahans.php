@@ -18,6 +18,6 @@ class Kelurahans extends Model
 
     public function penduduk()
     {
-        return $this->hasMany(Penduduk::class, 'nama_kelurahan', 'name');
+        return $this->hasMany(Penduduk::class, 'nama_kelurahan', 'id');
     }
 }

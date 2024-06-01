@@ -21,6 +21,7 @@ use App\Http\Controllers\tambahkategoriController;
 use App\Http\Controllers\JobLocationController;
 use App\Http\Controllers\UpdateKategoriController;
 use App\Http\Controllers\KelurahanController;
+use App\Http\Controllers\SearchController;
 
 // Login Admin Routes
 Route::get('/', function () {
@@ -133,3 +134,6 @@ Route::post('/store', [KelurahanController::class, 'store'])->name('kelurahan.st
 Route::get('/editkelurahan/{id}', [KelurahanController::class, 'edit'])->name('editkelurahan')->middleware('auth');
 Route::put('/updatekelurahan/{id}', [KelurahanController::class, 'update'])->name('updatekelurahan')->middleware('auth');
 Route::delete('/deletekelurahan/{id}', [KelurahanController::class, 'destroy'])->name('deletekelurahan')->middleware('auth', 'superadmin');
+
+// Routes Search
+Route::get('/search', [SearchController::class, 'search'])->name('search');

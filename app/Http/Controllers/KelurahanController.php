@@ -8,18 +8,50 @@ use Illuminate\Http\Request;
 
 class KelurahanController extends Controller
 {
-    public function index()
-    {
-        $kelurahans = Kelurahans::with('penduduk')->get();
-        $pendudukGroupedByKelurahan = Penduduk::all()->groupBy('nama_kelurahan');
+    public function index(Request $request)
+{
+    // Mengambil keyword dari request
+    $keyword = $request->keyword;
 
-        // Return view with kelurahans data
-        return view('wilayah', [
-            'kelurahans' => $kelurahans,
-            'pendudukGroupedByKelurahan' => $pendudukGroupedByKelurahan,
+    // Inisialisasi variabel untuk hasil pencarian
+    $kelurahans = collect();
+    $pendudukGroupedByKelurahan = collect();
 
-        ]);
+    if (is_numeric($keyword)) {
+        // Jika keyword adalah nomor KTP
+        $pendudukResults = Penduduk::with('kelurahan')->where('No_ktp', 'LIKE', '%' . $keyword . '%')->get();
+        
+        if ($pendudukResults->isNotEmpty()) {
+            // Mengambil ID kelurahan yang ditemukan dari hasil pencarian penduduk
+            $kelurahanIds = $pendudukResults->pluck('nama_kelurahan')->unique();
+
+            // Mengambil data kelurahan berdasarkan ID yang ditemukan dari hasil pencarian penduduk
+            $kelurahans = Kelurahans::with('penduduk')->whereIn('id', $kelurahanIds)->get();
+
+            // Mengelompokkan penduduk berdasarkan nama kelurahan yang ditemukan
+            $pendudukGroupedByKelurahan = $pendudukResults->groupBy('nama_kelurahan');
+        }
+    } else {
+        // Jika keyword adalah nama kelurahan
+        $kelurahans = Kelurahans::with('penduduk')->where('name', 'LIKE', '%' . $keyword . '%')->get();
+
+        if ($kelurahans->isNotEmpty()) {
+            // Mengambil ID kelurahan yang ditemukan
+            $kelurahanIds = $kelurahans->pluck('id');
+
+            // Mengelompokkan penduduk berdasarkan nama kelurahan yang ditemukan
+            $pendudukGroupedByKelurahan = Penduduk::whereIn('nama_kelurahan', $kelurahanIds)->get()->groupBy('nama_kelurahan');
+        }
     }
+
+    // Mengembalikan view dengan data yang diperlukan
+    return view('wilayah', [
+        'kelurahans' => $kelurahans,
+        'pendudukGroupedByKelurahan' => $pendudukGroupedByKelurahan,
+        'keyword' => $keyword,
+    ]);
+}
+
     public function create()
     {
         return view('tambahkelurahan');

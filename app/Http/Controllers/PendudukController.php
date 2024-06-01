@@ -103,7 +103,7 @@ class PendudukController extends Controller
      */
     public function create()
     {
-        $kelurahans = Kelurahans::pluck('name','name');
+        $kelurahans = Kelurahans::get();
         return view('formulirpenduduk', compact('kelurahans'));
     }
 
