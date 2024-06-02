@@ -1,7 +1,7 @@
 @extends('layouts.kalogakbisa')
 @section('content')
-<div class="container">
-    <h1>Add New Job Location</h1>
+<div class="container" style="border: 2px solid #f2f2f2; padding: 20px; margin-left: 55px; border-radius: 10px; background-color: #f2f2f2; box-shadow: 5px 5px 15px rgba(0,0,0,0.3);">
+    <h1 style="text-align: center; font-size: 40px;">Buat Lokasi Pekerjaan</h1>
     <form method="POST" action="{{ route('jobLocations.store') }}">
         @csrf
         <div class="form-group">
