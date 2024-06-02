@@ -14,7 +14,7 @@
                             <input type="text" class="form-control" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label>Wilayah Bertugas</label>
+                            <label>Kelurahan bertugas</label>
                             <input type="text" class="form-control" name="region" required>
                         </div>
                         <div class="form-group">

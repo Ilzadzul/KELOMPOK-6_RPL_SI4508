@@ -15,7 +15,7 @@
                             <input type="text" class="form-control" name="name" value="{{ $contact->name }}" required>
                         </div>
                         <div class="form-group">
-                            <label>Wilayah Bertugas</label>
+                            <label>Kelurahan bertugas</label>
                             <input type="text" class="form-control" name="region" value="{{ $contact->region }}" required>
                         </div>
                         <div class="form-group">
