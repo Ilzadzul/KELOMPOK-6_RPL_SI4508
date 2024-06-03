@@ -15,7 +15,7 @@
                         <thead>
                             <tr>
                                 <th>Nama</th>
-                                <th>Wilayah Bertugas</th>
+                                <th>Kelurahan bertugas</th>
                                 <th>Jabatan</th>
                                 <th>Nomor Telepon</th>
                                 @if(Auth::user()->user_type == 'Super Admin')

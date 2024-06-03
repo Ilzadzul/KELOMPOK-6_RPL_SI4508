@@ -1,22 +1,22 @@
 @extends('layouts.kalogakbisa')
 
 @section('content')
-<div class="container">
-    <h1>Job Locations</h1>
+<div class="container" style="border: 2px solid #f2f2f2; padding: 20px; margin-left: 55px; border-radius: 10px; background-color: #f2f2f2; box-shadow: 5px 5px 15px rgba(0,0,0,0.3);">
+    <h1 style="text-align: center; margin-bottom: 30px; font-size: 40px;">JOB LOCATIONS</h1>
     <form method="GET" action="{{ route('jobLocations.index') }}">
         <div class="form-group">
-            <input type="text" class="form-control" id="sub_district" name="sub_district" placeholder="Search by Sub District">
+            <input type="text" class="form-control" id="sub_district" name="sub_district" placeholder="Cari Berdasarkan Kecamatan">
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-primary">Cari</button>
     </form>
-    <a href="{{ route('jobLocations.create') }}" class="btn btn-primary">Add New Job Location</a>
+    <a href="{{ route('jobLocations.create') }}" class="btn btn-primary">Tambah Lokasi Pekerjaan</a>
     <table class="table">
         <thead>
             <tr>
                 <th>Kecamatan</th>
                 <th>Kelurahan</th>
                 <th>Link Map</th>
-                <th>Actions</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -24,13 +24,15 @@
             <tr>
                 <td>{{ $jobLocation->location }}</td>
                 <td>{{ $jobLocation->sub_district }}</td>
-                <td>{{ $jobLocation->setpoint }}</td>
                 <td>
-                    <a href="{{ route('jobLocations.edit', $jobLocation) }}" class="btn btn-primary">Edit</a>
+                    <a href="{{ $jobLocation->setpoint }}" target="_blank" rel="noopener noreferrer">{{ $jobLocation->setpoint }}</a>
+                </td>
+                <td>
+                    <a href="{{ route('jobLocations.edit', $jobLocation) }}" class="btn btn-primary">Ubah</a>
                     <form method="POST" action="{{ route('jobLocations.destroy', $jobLocation) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">Hapus</button>
                     </form>
                 </td>
             </tr>

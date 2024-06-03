@@ -15,7 +15,7 @@
                             <input type="text" class="form-control" name="name" value="{{ $contact->name }}" required>
                         </div>
                         <div class="form-group">
-                            <label>Wilayah Bertugas</label>
+                            <label>Kelurahan bertugas</label>
                             <input type="text" class="form-control" name="region" value="{{ $contact->region }}" required>
                         </div>
                         <div class="form-group">
@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nomor Telepon</label>
-                            <input type="text" class="form-control" name="phone_number" pattern="\d*" required>
+                            <input type="text" class="form-control" name="phone_number" pattern="\d*" value="{{ $contact->phone_number }}" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="{{ route('contacts.index') }}" class="btn btn-secondary">Kembali</a>

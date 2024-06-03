@@ -16,5 +16,6 @@ class Job extends Model
         'end_date',
         'location',
         'contact',
+        'category',
     ];
 }
