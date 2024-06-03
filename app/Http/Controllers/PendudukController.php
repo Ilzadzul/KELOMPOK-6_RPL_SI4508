@@ -180,7 +180,7 @@ class PendudukController extends Controller
     public function edit($id)
     {
         $kontak = Penduduk::find($id);
-        $kelurahans = Kelurahans::pluck('name','name');
+        $kelurahans = Kelurahans::get();
 
         return view('editformulirpenduduk', compact('kontak','kelurahans'));
 

@@ -93,7 +93,7 @@
                                 $kelurahan = $kelurahans->firstWhere('id', $kelurahanId);
                             @endphp
                             <button class="accordion" style="margin: 15px;">
-                                {{ $kelurahan->name }}
+                                {{ $kelurahan->name }} ({{$penduduks->count()}})
                             </button>
                             <div class="panel">
                                 <div class="ms-auto d-flex">
