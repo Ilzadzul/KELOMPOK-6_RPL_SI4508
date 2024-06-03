@@ -49,8 +49,8 @@ class JobController extends Controller
             'end_date' => 'required|date',
             'location' => 'required|string|max:255',
             'contact' => 'required|string|max:255',
-            'category' => 'required|string|in:Petani,Kesehatan,Tukang,Teknologi', // validasi untuk category
-        ]);
+            'category' => 'required|string|in:Teknologi,Keuangan,Pendidikan,Kesehatan', // validasi untuk category
+        ]);        
 
         $job->update($request->all());
 
