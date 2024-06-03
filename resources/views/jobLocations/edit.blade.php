@@ -10,7 +10,7 @@
             <input type="text" class="form-control" id="location" name="location" value="{{ $jobLocation->location }}">
         </div>
         <div class="form-group">
-            <label for="sub_district">Keluarahan</label>
+            <label for="sub_district">Kelurahan</label>
             <input type="text" class="form-control" id="sub_district" name="sub_district" value="{{ $jobLocation->sub_district }}">
         </div>
         <div class="form-group">
