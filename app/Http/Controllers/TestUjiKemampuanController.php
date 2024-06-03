@@ -50,7 +50,7 @@ class TestUjiKemampuanController extends Controller
             'nama_test' => 'required|string|max:255',
             'tanggal_pelaksanaan' => 'required|date',
             'tempat_pelaksanaan' => 'required|string|max:255',
-            'anggota_test' => 'nullable|string',
+            'anggota_test' => 'required|string',
         ]);
 
         $test = TestUjiKemampuan::findOrFail($id);
