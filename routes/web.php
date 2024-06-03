@@ -16,7 +16,12 @@ use App\Http\Controllers\TestUjiKemampuanController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RekomendasiPekerjaanController;
 use App\Http\Controllers\JobController;
-
+use App\Http\Controllers\KategoriPekerjaanController;
+use App\Http\Controllers\tambahkategoriController;
+use App\Http\Controllers\JobLocationController;
+use App\Http\Controllers\UpdateKategoriController;
+use App\Http\Controllers\KelurahanController;
+use App\Http\Controllers\SearchController;
 
 // Login Admin Routes
 Route::get('/', function () {
@@ -55,14 +60,14 @@ Route::delete('/deleteadmin/{id}', [AdminController::class, 'destroy'])->name('d
 Route::get('/formulirpenduduk', [PendudukController::class, 'create'])->name('formulirpenduduk')-> middleware('auth');;
 Route::post('/formulirpenduduk', [PendudukController::class, 'store'])->name('formulirpenduduk.store')-> middleware('auth');;
 
-
+Route::get('/export-all-data', [PendudukController::class, 'exportAllData'])->name('export.all.data')-> middleware('auth');;
 Route::get('/databasependuduk', [PendudukController::class, 'index'])->name('databasependuduk')-> middleware('auth');;
 // Route::get('/tambahdatabase', [DatabaseController::class, 'create'])->name('tambahdatabase');
 // Route::post('/tambahdatabase', [DatabaseController::class, 'store'])->name('tambahdatabase.store');
 
-Route::get('/editformulirpenduduk/{id}', [PendudukController::class, 'edit'])->name('editpenduduk');
-Route::put('/updatependuduk/{id}', [PendudukController::class, 'update'])->name('updatependuduk');
-Route::get('/deletependuduk/{id}', [PendudukController::class, 'destroy'])->name('deletependuduk');
+Route::get('/editformulirpenduduk/{id}', [PendudukController::class, 'edit'])->name('editpenduduk')-> middleware('auth');;
+Route::put('/updatependuduk/{id}', [PendudukController::class, 'update'])->name('updatependuduk')-> middleware('auth');;
+Route::get('/deletependuduk/{id}', [PendudukController::class, 'destroy'])->name('deletependuduk')-> middleware('auth');;
 
 Route::get('/feedback', [ReviewRatingController::class, 'showRatings'])->name('feedback');
 
@@ -88,31 +93,48 @@ Route::get('/kategoripekerjaan', function () {
     return view('kategoripekerjaan');
 });
 
-Route::get('/produksi-manufaktur', function () {
-    return view('produksi-manufaktur');
-})->name('produksi-manufaktur');
+Route::get('/produksi-manufaktur{id}', [KategoriPekerjaanController::class, 'show'] )->name('produksi-manufaktur');
 
 Route::get('/tambahkategori', function () {
     return view('tambahkategori');
 })->name('tambahkategori');
 
+Route::get('/kategoripekerjaan', [KategoriPekerjaanController::class, 'index'])->name('kategoripekerjaan');
+Route::post('/kategoripekerjaan/store', [KategoriPekerjaanController::class, 'store'])->name('kategoripekerjaan.store');
+Route::delete('/kategoripekerjaan/{id}', [KategoriPekerjaanController::class, 'destroy'])->name('kategoripekerjaan.destroy');
+Route::put('/update-kategori/{id}', [KategoriPekerjaanController::class, 'updateDeskripsi'])->name('update-kategori');
+
+// Route::post('/tambahkategori', [KategoriPekerjaanController::class, 'store'])->name('tambahkategori.store') ->middleware('web');
+Route::post('/tambah', [tambahkategoriController::class, 'store']);
+// Route::get('/tambahkategori', [KategoriPekerjaanController::class, 'create'])->name('tambahkategori.create');
+Route::get('/tambahkategori', [KategoriPekerjaanController::class, 'create'])->name('tambahkategori.create');
+Route::resource('/tambahkategori/posts', KategoriPekerjaanController::class)->middleware('auth');
+// routes dari Produksi Manufaktur
+Route::get('/updatekategori/edit', [UpdateKategoriController::class, 'edit'])->name('updatekategori.edit');
+Route::post('/updatekategori/update', [UpdateKategoriController::class, 'update'])->name('updatekategori.update');
+
 Route::resource('contacts', ContactController::class);
 
 // Routes for Test Uji Kemampuan
-Route::get('/test-uji-kemampuan', [TestUjiKemampuanController::class, 'index'])->name('test-uji-kemampuan.index');
-Route::get('/test-uji-kemampuan/create', [TestUjiKemampuanController::class, 'create'])->name('test-uji-kemampuan.create');
-Route::post('/test-uji-kemampuan', [TestUjiKemampuanController::class, 'store'])->name('test-uji-kemampuan.store');
-Route::get('/test-uji-kemampuan/{id}/edit', [TestUjiKemampuanController::class, 'edit'])->name('test-uji-kemampuan.edit');
-Route::put('/test-uji-kemampuan/{id}', [TestUjiKemampuanController::class, 'update'])->name('test-uji-kemampuan.update');
-Route::delete('/test-uji-kemampuan/{id}', [TestUjiKemampuanController::class, 'destroy'])->name('test-uji-kemampuan.destroy');
+Route::resource('testujikemampuan', TestUjiKemampuanController::class);
 
 // Routes for Rekomendasi Pekerjaan
-Route::get('/rekomendasi-pekerjaan', [RekomendasiPekerjaanController::class, 'index'])->name('rekomendasipekerjaan.index');
-Route::get('/rekomendasi-pekerjaan/create', [RekomendasiPekerjaanController::class, 'create'])->name('rekomendasipekerjaan.create');
-Route::post('/rekomendasi-pekerjaan', [RekomendasiPekerjaanController::class, 'store'])->name('rekomendasipekerjaan.store');
-Route::get('/rekomendasi-pekerjaan/{id}/edit', [RekomendasiPekerjaanController::class, 'edit'])->name('rekomendasipekerjaan.edit');
-Route::put('/rekomendasi-pekerjaan/{id}', [RekomendasiPekerjaanController::class, 'update'])->name('rekomendasipekerjaan.update');
-Route::delete('/rekomendasi-pekerjaan/{id}', [RekomendasiPekerjaanController::class, 'destroy'])->name('rekomendasipekerjaan.destroy');
+Route::resource('rekomendasipekerjaan', RekomendasiPekerjaanController::class);
+
 
 // Routes for Lowongan Pekerjaan
 Route::resource('jobs', JobController::class);
+Route::resource('jobs', JobController::class);
+
+Route::resource('jobLocations', JobLocationController::class);
+
+Route::get('/wilayah', [KelurahanController::class, 'index'])->name('kelurahan.index');
+Route::get('/tambahkelurahan', [KelurahanController::class, 'create'])->name('kelurahan.create')->middleware('auth', 'superadmin');
+Route::post('/store', [KelurahanController::class, 'store'])->name('kelurahan.store')->middleware('auth', 'superadmin');
+//crud
+Route::get('/editkelurahan/{id}', [KelurahanController::class, 'edit'])->name('editkelurahan')->middleware('auth');
+Route::put('/updatekelurahan/{id}', [KelurahanController::class, 'update'])->name('updatekelurahan')->middleware('auth');
+Route::delete('/deletekelurahan/{id}', [KelurahanController::class, 'destroy'])->name('deletekelurahan')->middleware('auth', 'superadmin');
+
+// Routes Search
+Route::get('/search', [SearchController::class, 'search'])->name('search');
