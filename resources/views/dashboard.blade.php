@@ -93,12 +93,11 @@
         </div>
       </div>
     </div>
-    <!-- pbi 10 -->
     
 <!-- pbi 11 selesai -->
     
     <div class="row mt-4">
-      <div class="col-lg-7 mb-lg-0 mb-4">
+      <!-- <div class="col-lg-7 mb-lg-0 mb-4">
         <div class="card ">
           <div class="card-header pb-0 p-3">
             <div class="d-flex justify-content-between">
@@ -203,76 +202,46 @@
             </table>
           </div>
         </div>
-      </div>
+      </div> -->
       
       
       <div class="col-lg-5">
-        <div class="card">
-          <div class="card-header pb-0 p-3">
+    <div class="card">
+        <div class="card-header pb-0 p-3">
             <h6 class="mb-0">Categories</h6>
-          </div>
-          <div class="card-body p-3">
-            <ul class="list-group">
-              <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                <div class="d-flex align-items-center">
-                  <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                    <i class="ni ni-laptop text-white opacity-10"></i>
-                  </div>
-                  <div class="d-flex flex-column">
-                    <h6 class="mb-1 text-dark text-sm">Teknologi</h6>
-                    <span class="text-xs">120 Lowongan</span>
-                  </div>
-                </div>
-                <div class="d-flex">
-                  <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                </div>
-              </li>
-              <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                <div class="d-flex align-items-center">
-                  <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                    <i class="ni ni-briefcase-24 text-white opacity-10"></i>
-                  </div>
-                  <div class="d-flex flex-column">
-                    <h6 class="mb-1 text-dark text-sm">Keuangan</h6>
-                    <span class="text-xs">80 Lowongan</span>
-                  </div>
-                </div>
-                <div class="d-flex">
-                  <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                </div>
-              </li>
-              <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                <div class="d-flex align-items-center">
-                  <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                    <i class="ni ni-hat-3 text-white opacity-10"></i>
-                  </div>
-                  <div class="d-flex flex-column">
-                    <h6 class="mb-1 text-dark text-sm">Pendidikan</h6>
-                    <span class="text-xs">50 Lowongan</span>
-                  </div>
-                </div>
-                <div class="d-flex">
-                  <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                </div>
-              </li>
-              <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
-                <div class="d-flex align-items-center">
-                  <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                    <i class="ni ni-ambulance text-white opacity-10"></i>
-                  </div>
-                  <div class="d-flex flex-column">
-                    <h6 class="mb-1 text-dark text-sm">Kesehatan</h6>
-                    <span class="text-xs">50 Lowongan</span>
-                  </div>
-                </div>
-                <div class="d-flex">
-                  <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                </div>
-              </li>
-            </ul>
-          </div>
         </div>
-      </div>
+        <div class="card-body p-3">
+            <ul class="list-group">
+                @php
+                    $categories = ['Teknologi', 'Keuangan', 'Pendidikan', 'Kesehatan'];
+                    $icons = ['ni ni-laptop', 'ni ni-briefcase-24', 'ni ni-hat-3', 'ni ni-ambulance'];
+                @endphp
+
+                @foreach($categories as $index => $category)
+                    @php
+                        $count = \App\Models\Job::where('category', $category)->count();
+                    @endphp
+                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                            <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                <i class="{{ $icons[$index] }} text-white opacity-10"></i>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <h6 class="mb-1 text-dark text-sm">{{ $category }}</h6>
+                                <span class="text-xs">{{ $count }} Lowongan Pekerjaan</span>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <a href="/jobs" class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
+                                <i class="ni ni-bold-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+</div>
     </div>
     {{-- @include('layouts.partial.footer') --}}
   </div>

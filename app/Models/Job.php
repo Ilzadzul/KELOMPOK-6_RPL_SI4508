@@ -16,6 +16,6 @@ class Job extends Model
         'end_date',
         'location',
         'contact',
-        'status', // Menambahkan kolom status ke dalam fillable
+        'category',
     ];
 }

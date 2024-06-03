@@ -19,15 +19,16 @@ return new class extends Migration
             $table->date('end_date');
             $table->string('location');
             $table->string('contact');
-            $table->string('status')->default('open'); // Menambahkan kolom status
+            $table->string('category');
             $table->timestamps();
         });
     }
 
+
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('jobs');
     }

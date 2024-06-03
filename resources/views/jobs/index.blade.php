@@ -1,8 +1,8 @@
 @extends('layouts.kalogakbisa')
 
 @section('content')
-<div class="container mt-5">
-    <h2>Job Listings</h2>
+<div class="container" style="border: 2px solid #f2f2f2; padding: 20px; margin-left: 55px; border-radius: 10px; background-color: #f2f2f2; box-shadow: 5px 5px 15px rgba(0,0,0,0.3);">
+    <h2 style="text-align: center;">Job Listings</h2>
     <a href="{{ route('jobs.create') }}" class="btn btn-primary mb-3">Add New Job</a>
 
     @if ($message = Session::get('success'))
@@ -74,7 +74,7 @@
                 <th>End Date</th>
                 <th>Location</th>
                 <th>Contact</th>
-                <th>Status</th>
+                <th>Category</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -87,26 +87,27 @@
                 <td>{{ $job->end_date }}</td>
                 <td>{{ $job->location }}</td>
                 <td>{{ $job->contact }}</td>
-                <td>{{ $job->status }}</td>
+                <td>{{ $job->category }}</td>
                 <td>
-                    @if(auth()->user()->user_type === 'Super Admin')
-                        <a href="{{ route('jobs.edit', $job->id) }}" class="btn-edit">Edit</a>
-                        <form action="{{ route('jobs.destroy', $job->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn-delete">Delete</button>
-                        </form>
-                    @else
-                        <span>View Only</span>
-                    @endif
+                    <a href="{{ route('jobs.edit', $job->id) }}" class="btn-edit">Edit</a>
+                    <form action="{{ route('jobs.destroy', $job->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn-delete">Delete</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col text-center">
+            <a href="{{ url('/dashboard') }}" class="btn btn-primary">Kembali</a>
+        </div>
+    </div>
+</div>
+
 @endsection
-
-
-<!-- test commit 1 -->
-<!-- test commit pbi 30 -->
