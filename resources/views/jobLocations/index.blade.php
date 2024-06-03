@@ -25,7 +25,7 @@
                 <td>{{ $jobLocation->location }}</td>
                 <td>{{ $jobLocation->sub_district }}</td>
                 <td>
-                    <a href="{{ $jobLocation->setpoint }}" target="_blank">{{ $jobLocation->setpoint }}</a>
+                    <a href="{{ $jobLocation->setpoint }}" target="_blank" rel="noopener noreferrer">{{ $jobLocation->setpoint }}</a>
                 </td>
                 <td>
                     <a href="{{ route('jobLocations.edit', $jobLocation) }}" class="btn btn-primary">Ubah</a>
