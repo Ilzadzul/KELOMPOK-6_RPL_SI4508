@@ -36,7 +36,8 @@ class Penduduk extends Model
     ];
     public function kelurahan()
     {
-        return $this->belongsTo(Kelurahans::class, 'nama_kelurahan', 'id');
+        //before return $this->belongsTo(Kelurahans::class, 'nama_kelurahan', 'id');
+        return $this->belongsTo(Kelurahans::class, 'nama_kelurahan', 'name');
     }
 
 }

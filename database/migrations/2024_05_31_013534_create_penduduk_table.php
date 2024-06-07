@@ -20,7 +20,8 @@ class CreatePendudukTable extends Migration
             $table->enum('gender', ['Pria', 'Wanita']);
             $table->enum('agama', ['Islam', 'Kristen','Katolik','Hindu', 'Buddha', 'Khonghucu']);
             $table->string('alamat');
-            $table->unsignedBigInteger('nama_kelurahan');
+            //before $table->unsignedBigInteger('nama_kelurahan');
+            $table->string('nama_kelurahan');
             $table->bigInteger('phonenumber')->nullable();
             $table->string('email', 128)->nullable();
             $table->bigInteger('No_ktp')->nullable();

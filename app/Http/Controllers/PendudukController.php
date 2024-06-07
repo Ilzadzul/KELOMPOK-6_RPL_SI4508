@@ -103,7 +103,8 @@ class PendudukController extends Controller
      */
     public function create()
     {
-        $kelurahans = Kelurahans::get();
+        //before $kelurahans = Kelurahans::get();
+        $kelurahans = Kelurahans::pluck('name','name');
         return view('formulirpenduduk', compact('kelurahans'));
     }
 
@@ -180,7 +181,8 @@ class PendudukController extends Controller
     public function edit($id)
     {
         $kontak = Penduduk::find($id);
-        $kelurahans = Kelurahans::get();
+        //before $kelurahans = Kelurahans::get();
+        $kelurahans = Kelurahans::pluck('name','name');
 
         return view('editformulirpenduduk', compact('kontak','kelurahans'));
 

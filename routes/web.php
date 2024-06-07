@@ -136,4 +136,5 @@ Route::put('/updatekelurahan/{id}', [KelurahanController::class, 'update'])->nam
 Route::delete('/deletekelurahan/{id}', [KelurahanController::class, 'destroy'])->name('deletekelurahan')->middleware('auth', 'superadmin');
 
 // Routes Search
-Route::get('/search', [SearchController::class, 'search'])->name('search');
+//before Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/search', [KelurahanController::class, 'search'])->name('search');

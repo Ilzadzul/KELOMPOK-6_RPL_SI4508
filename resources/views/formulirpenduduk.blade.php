@@ -81,7 +81,8 @@
                             <select class="form-control @error('nama_kelurahan') is-invalid @enderror" name="nama_kelurahan">
                                 <option disabled>Select kelurahan</option>
                                 @foreach($kelurahans as $kelurahan)
-                                    <option value="{{ $kelurahan->id }}" {{ old('nama_kelurahan') == $kelurahan ? 'selected' : '' }}>{{ $kelurahan->name}}</option>
+                                    {{-- before <option value="{{ $kelurahan->id }}" {{ old('nama_kelurahan') == $kelurahan ? 'selected' : '' }}>{{ $kelurahan->name}}</option> --}}
+                                    <option value="{{ $kelurahan }}" {{ old('nama_kelurahan') == $kelurahan ? 'selected' : '' }}>{{ $kelurahan }}</option>
                                 @endforeach
                             </select>
                             @error('nama_kelurahan')

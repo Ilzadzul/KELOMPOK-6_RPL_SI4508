@@ -179,8 +179,8 @@
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                         <div class="input-group">
-                            {{-- Fitur Search --}}
-                            <form action="{{ route('kelurahan.index') }}" method="GET">
+                            {{-- before Fitur Search --}}
+                            {{-- <form action="{{ route('kelurahan.index') }}" method="GET">
                                 <div class="input-group mb-2">
                                     <span class="input-group-text text-body p-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -191,7 +191,7 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
-                            
+
                             <style>
                                 .input-group .form-control,
                                 .input-group .btn,
@@ -210,8 +210,8 @@
                                 .btn-primary:disabled {
                                     color: #fff; /* Keep text color white when button is disabled */
                                 }
-                            </style>
-                            {{-- Batas Fitur Search --}}
+                            </style> --}}
+                            {{-- end before Batas Fitur Search --}}
                         </div>
                     </div>
                     <ul class="navbar-nav  justify-content-end">
