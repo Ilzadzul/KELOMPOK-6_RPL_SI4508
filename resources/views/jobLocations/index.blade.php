@@ -9,14 +9,18 @@
         </div>
         <button type="submit" class="btn btn-primary">Cari</button>
     </form>
-    <a href="{{ route('jobLocations.create') }}" class="btn btn-primary">Tambah Lokasi Pekerjaan</a>
+    @if(Auth::user()->user_type == 'Super Admin')
+        <a href="{{ route('jobLocations.create') }}" class="btn btn-primary">Tambah Lokasi Pekerjaan</a>
+    @endif
     <table class="table">
         <thead>
             <tr>
                 <th>Kecamatan</th>
                 <th>Kelurahan</th>
                 <th>Link Map</th>
-                <th>Aksi</th>
+                @if(Auth::user()->user_type == 'Super Admin')
+                    <th>Aksi</th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -27,14 +31,16 @@
                 <td>
                     <a href="{{ $jobLocation->setpoint }}" target="_blank" rel="noopener noreferrer">{{ $jobLocation->setpoint }}</a>
                 </td>
+                @if(Auth::user()->user_type == 'Super Admin')
                 <td>
                     <a href="{{ route('jobLocations.edit', $jobLocation) }}" class="btn btn-primary">Ubah</a>
-                    <form method="POST" action="{{ route('jobLocations.destroy', $jobLocation) }}">
+                    <form method="POST" action="{{ route('jobLocations.destroy', $jobLocation) }}" onsubmit="return confirm('Apakah Anda yakin ingin menghapus?')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Hapus</button>
                     </form>
                 </td>
+                @endif
             </tr>
             @endforeach
         </tbody>
@@ -75,31 +81,3 @@
 </div>
 
 @endsection
-
-<style>
-.table {
-    border-collapse: collapse;
-}
-
-.table th,
-.table td {
-    border: 1px solid #dee2e6; /* Warna border bisa disesuaikan */
-    padding: 8px; /* Atur padding sesuai kebutuhan */
-}
-
-.table thead th {
-    background-color: #f8f9fa; /* Warna background header tabel */
-    border-bottom: 2px solid #dee2e6; /* Border bawah yang lebih tebal untuk header */
-}
-
-.table tbody tr:nth-child(odd) {
-    background-color: #f2f2f2; /* Warna selang-seling untuk baris tabel */
-}
-
-/* Tambahkan responsivitas untuk tampilan mobile */
-@media (max-width: 768px) {
-    .table-responsive {
-        border: 0;
-    }
-}
-</style>
