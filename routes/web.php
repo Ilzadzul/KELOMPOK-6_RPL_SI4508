@@ -15,6 +15,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\TestUjiKemampuanController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RekomendasiPekerjaanController;
+use App\Http\Controllers\MessageController;
 
 
 // Login Admin Routes
@@ -107,3 +108,6 @@ Route::resource('testujikemampuan', TestUjiKemampuanController::class);
 Route::resource('rekomendasipekerjaan', RekomendasiPekerjaanController::class);
 
 
+Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
+Route::delete('/messages/{id}', [MessageController::class, 'destroy'])->name('messages.destroy');

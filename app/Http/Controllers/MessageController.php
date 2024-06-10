@@ -23,18 +23,18 @@ class MessageController extends Controller
     {
         $request->validate([
             'message' => 'required|string|max:255',
+            'user' => 'required|string|max:255',
         ]);
-
+    
         $data = [
             'message' => $request->message,
-            'user' => Auth::user()->name, // Ambil nama pengguna yang sedang login
+            'user' => $request->user, // Ambil user dari input form
         ];
-
+    
         AdminMessage::create($data);
-
+    
         return redirect()->route('messages.index')->with('success', 'Message added successfully');
     }
-
     public function destroy($id)
     {
         $message = AdminMessage::find($id);
