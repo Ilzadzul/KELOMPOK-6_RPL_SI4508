@@ -90,11 +90,13 @@
                 <td>{{ $job->category }}</td>
                 <td>
                     <a href="{{ route('jobs.edit', $job->id) }}" class="btn-edit">Edit</a>
+                    @if(Auth::user()->user_type !== 'Admin')
                     <form action="{{ route('jobs.destroy', $job->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn-delete">Delete</button>
                     </form>
+                    @endif
                 </td>
             </tr>
             @endforeach
